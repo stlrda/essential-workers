@@ -53,3 +53,4 @@ urllib3==1.25.10
 wcwidth==0.2.5
 webencodings==0.5.1
 wincertstore==0.2
+xlrd==1.2.0
