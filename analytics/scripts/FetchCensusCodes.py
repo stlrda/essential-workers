@@ -63,6 +63,15 @@ def fetch_tract_codes_by_county(state_code, county_code, survey=survey, year=yea
         tract_codes.append((tract, code))
     return tract_codes
 
+# returns tuple containing list of all variables for a table and a corresponding list of labels
+def fetch_variables_and_labels(survey, year, table):
+    results = censusdata.censustable(survey, year, table)
+    result_variables = []
+    result_labels = []
+    for (value, info) in results.items():
+        result_variables.append(value)
+        result_labels.append(re.sub(r".*[!!]",'',info['label']))
+    return(result_variables,result_labels)
 
 metro_code = fetch_metro_area_code(metro_area)
 MO_state_code = fetch_state_code(state)
