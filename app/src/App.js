@@ -1,12 +1,28 @@
-import React from 'react';
+// Libraries
+import React, {useState} from 'react';
+
+// Styles
 import './App.css';
 
+// Components
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import Map from './components/Map';
+
+
 function App() {
+
   return (
-    <div className="App">
-      <pre>{"JavaScript"}</pre>
-    </div>
+    <>
+    <Navbar/>
+    <section>
+      <Map />
+    </section>
+    
+    <Footer />
+    </>
   );
 }
+
 
 export default App;

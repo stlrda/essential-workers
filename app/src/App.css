@@ -1,8 +1,15 @@
+html, body {
+  margin:0px;
+  padding:0px;
+}
+
+
 .App {
   text-align: center;
 }
 
+
 @font-face {
-  font-family: headline;
-  src: url('./fonts/Montserrat-ExtraBold.ttf');
+  font-family: Montserrat-ExtraBold;
+  src: local('Montserrat-ExtraBold'), url('./fonts/Montserrat-ExtraBold.ttf') format('tff');
 }

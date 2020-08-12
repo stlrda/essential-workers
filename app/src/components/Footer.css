@@ -1,0 +1,32 @@
+div.footer {
+    margin-top: 5vh;
+    background-color: #e6e6e6;
+    width: 100%;
+}
+
+div.support-wrapper {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-self: center;
+    margin-left: 15%;
+    margin-right: 15%;
+  }
+  
+div.support-wrapper p {
+    font-family: description;
+    line-height: 20px;
+}
+
+a:link {
+    text-decoration: underline;
+    color: rgb(0, 128, 119);
+}
+  
+a:visited {
+    text-decoration: underline;
+    color: rgb(0, 30, 71);
+}
+  
+a:hover {
+    text-decoration: underline;
+}
