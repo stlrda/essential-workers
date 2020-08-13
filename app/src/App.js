@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <Navbar/>
-      
+      <Hero />
       <article>
         <Map />
         <Table />

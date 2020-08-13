@@ -14,11 +14,11 @@ const data = require('../data/test.json');
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: theme.palette.common.blue,
     color: theme.palette.common.white,
   },
   body: {
-    fontSize: 14,
+    fontSize: 12,
   },
 }))(TableCell);
 
@@ -34,6 +34,7 @@ const StyledTableRow = withStyles((theme) => ({
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
+    maxHeight: 200,
   },
 });
 

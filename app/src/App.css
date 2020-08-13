@@ -1,12 +1,6 @@
 html, body {
   margin: 0px;
   padding: 0px;
-  background-image: url('../src/images/essential-worker.jpg');
-  background-color: #e6e6e6; /* Used if the image is unavailable */
-  background-attachment: fixed;
-  background-position: 0% 15%; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: 100vw 70vh; /* Resize the background image to cover the entire container */
 }
 
 

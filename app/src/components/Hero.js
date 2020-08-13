@@ -9,6 +9,12 @@ function Hero() {
   return (
     <>
       <div id="hero-image-area">
+        <h1>
+          <pre>
+            Essential Workers: Data<br/>
+            across Missouri and Illinois
+          </pre>
+        </h1>
       </div>
     </>
   );
