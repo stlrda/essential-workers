@@ -1,33 +1,63 @@
 import React from 'react';
-import DataTable from 'react-data-table-component';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 import './Table.css';
 
-const data = require("../data/test.json");
+const data = require('../data/test.json');
 
-console.log(data);
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
 
-const columns = [{name: "Demographics", selector: '', sortable: true}
-, {name: "All Workers", selector: '', sortable: true}
-, {name: "All Frontline Industries", selector: '', sortable: true}
-,{name: "Grocery, Convenience, and Drug Stores", selector: '', sortable: true}
-, {name: "Public Transit", selector: '', sortable: true}
-, {name: "Trucking, Warehouse, and Postal Service", selector: '', sortable: true}
-, {name: "Building Cleaning Services", selector: '', sortable: true}
-, {name: "Health Care", selector: '', sortable: true}
-, {name: "Child Care and Social Services", selector: '', sortable: true}];
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
 
-class Table extends React.Component {
-    render() {
-      return (
-        <section id="table-section">
-          <DataTable className="rdt_Table"
-            columns={columns}
-            data={data}
-          />
-        </section>
-      )
-    }
-};
 
-export default Table;
+const useStyles = makeStyles({
+  table: {
+    minWidth: 700,
+  },
+});
+
+export default function CustomizedTables() {
+  const classes = useStyles();
+
+  return (
+    <TableContainer component={Paper} id="table">
+      <Table className={classes.table} aria-label="customized table">
+        <TableHead>
+          <TableRow>
+            {Object.keys(data[0]).map(row => <StyledTableCell>{row}</StyledTableCell>)}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {data.map((row) => (
+            <StyledTableRow key={row.Demographics}>
+              {Object.values(row).map(val => <StyledTableCell component="th" scope="row">
+                {val}
+              </StyledTableCell>)}
+            </StyledTableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+}

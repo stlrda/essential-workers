@@ -1,6 +1,6 @@
 #root > article > section#map-section > div {
     display: block;
-    margin-left: 30%;
+    margin-left: 35%;
     margin-right: auto;
     width: 50%;
 }
@@ -13,4 +13,3 @@
 div.overlays {
     visibility: hidden;
 }
-
