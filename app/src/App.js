@@ -1,5 +1,5 @@
 // Libraries
-import React, {useState} from 'react';
+import React from 'react';
 
 // Styles
 import './App.css';
@@ -8,18 +8,21 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Map from './components/Map';
+import Table from './components/Table';
+import Hero from './components/Hero';
 
 
 function App() {
 
   return (
     <>
-    <Navbar/>
-    <section>
-      <Map />
-    </section>
-    
-    <Footer />
+      <Navbar/>
+      <Hero />
+      <article>
+        <Map />
+        <Table />
+        <Footer />
+      </article>
     </>
   );
 }

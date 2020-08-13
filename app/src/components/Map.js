@@ -6,7 +6,7 @@ import ReactMapGL, {Source, Layer} from "react-map-gl";
 import './Map.css';
 
 // Data
-import STL_Counties from '../data/geojson/STL_MSA_Counties.geojson';
+// import STL_Counties from '../data/geojson/STL_MSA_Counties.geojson';
 import MO_IL_Counties from '../data/geojson/MO_IL_Counties.geojson';
 
 
@@ -15,7 +15,7 @@ const dataLayer = {
     type: 'fill',
     paint: {
       'fill-color': {
-        property: 'percentile',
+        property: 'count',
         stops: [
           [0, '#3288bd'],
           [1, '#66c2a5'],
@@ -38,17 +38,19 @@ const Map = (props) => {
     const [viewport, setViewport] = useState({
         latitude: 38.6264178,
         longitude: -90.1998378,
-        width: "68vw",
-        height: "68vh",
-        zoom: 9
+        width: "62vw",
+        height: "60vh",
+        zoom: 7,
     });
 
     return (
-        <ReactMapGL {...viewport} className="map" transitionDuration={1000} mapStyle="mapbox://styles/mapbox/dark-v10" onViewportChange={viewport => setViewport(viewport)} mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
-            <Source type="geojson" data={MO_IL_Counties}>
-                <Layer {...dataLayer} />
-            </Source>
-        </ReactMapGL>
+        <section id="map-section">
+          <ReactMapGL {...viewport} className="map" transitionDuration={700} mapStyle="mapbox://styles/mapbox/streets-v11" onViewportChange={viewport => setViewport(viewport)} mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
+              <Source type="geojson" data={MO_IL_Counties}>
+                  <Layer {...dataLayer} />
+              </Source>
+          </ReactMapGL>
+        </section>
     );
 }
 

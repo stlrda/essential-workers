@@ -1,10 +1,11 @@
 @font-face {
     font-family: Montserrat-ExtraBold;
     src: local('Montserrat-ExtraBold'), url('../fonts/Montserrat-ExtraBold.ttf') format('tff');
+    color: black;
   }
   
 .MuiAppBar-colorPrimary {
-  background-color: #1B365D !important;
+  background-color: #ffffff !important;
 }
 
 .MuiTypography-root.MuiTypography-h3 {
@@ -14,14 +15,4 @@
 
 .MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-colorInherit {
   text-align: right;
-}
-
-h1.app-title {
-  font-family: headline;
-}
-
-h4.app-links {
-  color: white;
-  text-align: right;
-  font-family: headline;
 }

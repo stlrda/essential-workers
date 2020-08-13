@@ -1,10 +1,9 @@
-div.footer {
+footer {
     margin-top: 5vh;
-    background-color: #e6e6e6;
     width: 100%;
 }
 
-div.support-wrapper {
+.support-wrapper {
     display: inline-flex;
     flex-wrap: nowrap;
     align-self: center;
@@ -12,7 +11,7 @@ div.support-wrapper {
     margin-right: 15%;
   }
   
-div.support-wrapper p {
+.support-wrapper p {
     font-family: description;
     line-height: 20px;
 }
