@@ -2,12 +2,12 @@
     display: block;
     margin-left: 35%;
     margin-right: auto;
+    margin-bottom: 4%;
     width: 50%;
 }
 
 .map {
-    margin-top: 8%;
-    margin-bottom: 8%;
+    margin-top: 4%;
     border-style: solid;
     border-width: thin;
     border-color: midnightblue;

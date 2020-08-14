@@ -9,6 +9,21 @@ article {
 }
 
 p#summary {
-  margin: 0px;
-  padding-top: 5em;
+  font-size: 2em;
+  margin-top: 0px;
+  padding-top: 2em;
+  display: block;
+  margin-left: 35%;
+  margin-right: auto;
+  width: 50%;
+}
+
+p#table-summary {
+  font-size: 2em;
+  margin-top: 0px;
+  padding-top: 1em;
+  display: block;
+  margin-left: 35%;
+  margin-right: auto;
+  width: 50%;
 }

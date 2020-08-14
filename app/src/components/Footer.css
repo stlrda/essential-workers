@@ -1,5 +1,5 @@
 footer {
-    margin-top: 5vh;
+    margin-top: 3vh;
     width: 100%;
 }
 
@@ -12,6 +12,7 @@ footer {
   }
   
 .support-wrapper p {
+    font-size: 1em;
     font-family: description;
     line-height: 20px;
 }
