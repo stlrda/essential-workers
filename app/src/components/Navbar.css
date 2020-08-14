@@ -3,6 +3,11 @@
     src: local('Montserrat-ExtraBold'), url('../fonts/Montserrat-ExtraBold.ttf') format('tff');
     color: black;
   }
+
+.nav-button {
+  margin-left: 69% !important;
+  color: #1B365D !important;
+}
   
 .MuiAppBar-colorPrimary {
   background-color: #ffffff !important;

@@ -8,6 +8,9 @@
 .map {
     margin-top: 8%;
     margin-bottom: 8%;
+    border-style: solid;
+    border-width: thin;
+    border-color: midnightblue;
 }
 
 div.overlays {

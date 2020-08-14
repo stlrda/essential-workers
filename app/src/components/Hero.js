@@ -11,8 +11,9 @@ function Hero() {
       <div id="hero-image-area">
         <h1>
           <pre>
-            Essential Workers: Data<br/>
-            across Missouri and Illinois
+            Essential Workers:<br/>
+            Demographics across Missouri,<br/>
+            Illinois, and Saint Louis Metro
           </pre>
         </h1>
       </div>

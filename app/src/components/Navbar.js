@@ -1,6 +1,6 @@
 // Libraries
 import React from 'react'
-import { Toolbar, AppBar } from '@material-ui/core'
+import { Toolbar, AppBar, Button } from '@material-ui/core'
 
 // Styles
 import './Navbar.css'
@@ -14,6 +14,9 @@ const Navbar = (props) => {
         <a href="https://stldata.org/" rel="noopener">
           <img id="logo" src={RDALogo} alt="Regional Data Alliance Logo"/>
         </a>
+        <Button className="nav-button">
+          Download Data
+        </Button>
       </Toolbar>
     </AppBar>
   )
