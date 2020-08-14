@@ -15,7 +15,9 @@ year = 2018
 state = "Missouri"
 metro_area = "St. Louis"
 MO_metro_counties = ["Franklin", "Jefferson", "Lincoln", "St. Charles", "St. Louis city", "St. Louis", "Warren"]
+MO_metro_county_codes= ['071', '099', '113', '183', '510', '189', '219']
 IL_metro_counties = ["Bond", "Calhoun", "Clinton", "Jersey", "Macoupin", "Madison", "Monroe", "St. Clair"]
+IL_metro_county_codes = ['005', '013', '027', '083', '117', '119', '133', '163']
 
 try:
     census_api_key = os.environ["census_api_key"]
@@ -63,8 +65,8 @@ def fetch_tract_codes_by_county(state_code, county_code, survey=survey, year=yea
         tract_codes.append((tract, code))
     return tract_codes
 
-# returns tuple containing list of all variables for a table and a corrisponding list of labels
-def fetch_variables_and_labels(survey, year, table):
+# returns tuple containing list of all variables for a table and a corresponding list of labels
+def fetch_variables_and_labels(table, survey=survey, year=year):
     results = censusdata.censustable(survey, year, table)
     result_variables = []
     result_labels = []
@@ -72,6 +74,32 @@ def fetch_variables_and_labels(survey, year, table):
         result_variables.append(value)
         result_labels.append(re.sub(r".*[!!]",'',info['label']))
     return(result_variables,result_labels)
+
+def fetch_data_frame(table, state_county_pair):
+    fetch_vars = fetch_variables_and_labels(table)
+    
+    variable_list = fetch_vars[0]
+    col_names = fetch_vars[1]
+    
+    union = pd.DataFrame(columns=variable_list)
+
+    for (state, county) in state_county_pair:
+        single_county_df = censusdata.download(survey, year,
+                                censusdata.censusgeo([('state', state), ('county', county)]),
+                                variable_list,
+                                census_api_key,
+                                'detail')
+
+        union = pd.concat([union, single_county_df], sort = True)
+
+    union.columns = col_names
+    
+    union = union.apply(pd.to_numeric)
+
+    union.replace({-666666666: None}, inplace=True)
+
+    return union
+
 
 metro_code = fetch_metro_area_code(metro_area)
 MO_state_code = fetch_state_code(state)
@@ -83,8 +111,8 @@ MO_counties = censusdata.geographies(geo, survey, year, key=census_api_key)
 geo = censusdata.censusgeo([('state', IL_state_code), ('county', '*')])
 IL_counties = censusdata.geographies(geo, survey, year, key=census_api_key)
 
-MO_metro_county_codes = [fetch_county_code(county) for county in MO_metro_counties]
-IL_metro_county_codes = [fetch_county_code(county, state="Illinois") for county in IL_metro_counties]
+# MO_metro_county_codes = [fetch_county_code(county) for county in MO_metro_counties]
+# IL_metro_county_codes = [fetch_county_code(county, state="Illinois") for county in IL_metro_counties]
 
 MO_metro_tract_codes = [fetch_tract_codes_by_county(MO_state_code, county_code) for county_code in MO_metro_county_codes]
 IL_metro_tract_codes = [fetch_tract_codes_by_county(IL_state_code, county_code) for county_code in IL_metro_county_codes]
