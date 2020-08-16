@@ -12,13 +12,15 @@ import './Table.css';
 
 const data = require('../data/test.json');
 
+console.log(data);
+
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: "#1B365D",
     color: theme.palette.common.white,
   },
   body: {
-    fontSize: 12,
+    fontSize: 10,
   },
 }))(TableCell);
 
@@ -34,7 +36,6 @@ const StyledTableRow = withStyles((theme) => ({
 const useStyles = makeStyles({
   table: {
     minWidth: 700,
-    maxHeight: 200,
   },
 });
 

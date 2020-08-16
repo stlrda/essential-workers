@@ -38,14 +38,23 @@ const Map = (props) => {
     const [viewport, setViewport] = useState({
         latitude: 38.6264178,
         longitude: -90.1998378,
-        width: "62vw",
+        width: "66vw",
         height: "60vh",
-        zoom: 7,
+        zoom: 5,
+        pitch: 30,
+    });
+
+    const [settings, setSettings] = useState({
+      doubleClickZoom: false,
+      minZoom: 5,
+      maxZoom: 20,
+      minPitch: 30,
+      maxPitch: 30
     });
 
     return (
         <section id="map-section">
-          <ReactMapGL {...viewport} className="map" transitionDuration={700} mapStyle="mapbox://styles/mapbox/streets-v11" onViewportChange={viewport => setViewport(viewport)} mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
+          <ReactMapGL {...viewport} {...settings} className="map" transitionDuration={700} mapStyle="mapbox://styles/mapbox/streets-v11" onViewportChange={viewport => setViewport(viewport)} mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
               <Source type="geojson" data={MO_IL_Counties}>
                   <Layer {...dataLayer} />
               </Source>
