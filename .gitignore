@@ -1,6 +1,9 @@
 #Virtal Environment
 essential
 api_keys.py
+census_data_exploration.ipynb
+puma_data_exploration.ipynb
+stata_data_exploration.ipynb
 
 #Misc
 ACS2018_Table_Shells.xlsx
