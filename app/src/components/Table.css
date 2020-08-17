@@ -1,17 +1,18 @@
-#table {
+#ctable {
     display: block;
     margin-top: 4%;
     margin-bottom: 4%;
     margin-left: 30%;
     margin-right: auto;
-    width: 63%;
+    width: 66%;
     
     border-color: #1B365D;
     border-width: thin;
 }
 
-/* tr {
-    margin: 0%;
-    padding: 0%;
-    height: 40px;
-} */
+#table-header {
+    background-color: #1B365D;
+    color: mintcream;
+    text-align: center;
+    font-size: 2em;
+}

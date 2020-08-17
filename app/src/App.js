@@ -9,7 +9,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Map from './components/Map';
 import Hero from './components/Hero';
-import CTable from './components/CTable';
+import Table from './components/Table';
 
 function App() {
 
@@ -25,7 +25,7 @@ function App() {
         <p id="table-summary">
           Magna ac placerat vestibulum lectus mauris ultrices eros. Urna condimentum mattis pellentesque id. Sed viverra ipsum nunc aliquet bibendum. Purus in massa tempor nec. Vitae nunc sed velit dignissim sodales ut eu sem integer. Ullamcorper sit amet risus nullam. Habitasse platea dictumst vestibulum rhoncus est pellentesque elit. Dolor sit amet consectetur adipiscing elit ut aliquam. Ridiculus mus mauris vitae ultricies leo integer malesuada nunc. Neque vitae tempus quam pellentesque nec nam aliquam.
         </p>
-        <CTable />
+        <Table />
         <Footer />
       </article>
     </>
