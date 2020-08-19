@@ -1,6 +1,8 @@
 footer {
-    margin-top: 3vh;
+    padding-top: 3%;
+    padding-bottom: 3%;
     width: 100%;
+    position: sticky;
 }
 
 .support-wrapper {

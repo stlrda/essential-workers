@@ -31,6 +31,8 @@ rows: [data[23], data[24], data[25]]},
 rows: [data[27], data[28]]},
 ];
 
+console.log(data, rows);
+
 
 function CollapsibleRow(props) {
   const { row } = props;
@@ -68,14 +70,14 @@ function CollapsibleRow(props) {
                   {row["rows"].map(row =>
                   <TableRow>
                   <TableCell>{row["Demographics"]}</TableCell>
-                  <TableCell>{row["All Workers"]}</TableCell>
-                  <TableCell>{row["All Frontline Industries"]}</TableCell>
-                  <TableCell>{row["Grocery, Convenience, and Drug Stores"]}</TableCell>
-                  <TableCell>{row["Public Transit"]}</TableCell>
-                  <TableCell>{row["Trucking, Warehouse, and Postal Service"]}</TableCell>
-                  <TableCell>{row["Health Care"]}</TableCell>
-                  <TableCell>{row["Child Care and Social Services"]}</TableCell>
-                  <TableCell>{row["Building Cleaning Services"]}</TableCell>
+                  <TableCell>{row["All Workers"]}%</TableCell>
+                  <TableCell>{row["All Frontline Industries"]}%</TableCell>
+                  <TableCell>{row["Grocery, Convenience, and Drug Stores"]}%</TableCell>
+                  <TableCell>{row["Public Transit"]}%</TableCell>
+                  <TableCell>{row["Trucking, Warehouse, and Postal Service"]}%</TableCell>
+                  <TableCell>{row["Health Care"]}%</TableCell>
+                  <TableCell>{row["Child Care and Social Services"]}%</TableCell>
+                  <TableCell>{row["Building Cleaning Services"]}%</TableCell>
                   </TableRow>
                   )}
                 </TableBody>

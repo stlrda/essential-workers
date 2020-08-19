@@ -1,12 +1,13 @@
 // Libraries
 import React, {useState} from 'react';
-import ReactMapGL, {Source, Layer} from "react-map-gl";
+import ReactMapGL, {Source, Layer, NavigationControl} from "react-map-gl";
+
 
 // Styles
 import './Map.css';
 
 // Data
-// import STL_Counties from '../data/geojson/STL_MSA_Counties.geojson';
+import STL_Counties from '../data/geojson/STL_MSA_Counties.geojson';
 import MO_IL_Counties from '../data/geojson/MO_IL_Counties.geojson';
 
 
@@ -55,9 +56,12 @@ const Map = (props) => {
     return (
         <section id="map-section">
           <ReactMapGL {...viewport} {...settings} className="map" transitionDuration={700} mapStyle="mapbox://styles/mapbox/streets-v11" onViewportChange={viewport => setViewport(viewport)} mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
-              <Source type="geojson" data={MO_IL_Counties}>
+              <Source type="geojson" data={STL_Counties}>
                   <Layer {...dataLayer} />
               </Source>
+              <div style={{position: 'absolute', right: 0}}>
+                <NavigationControl />
+              </div>
           </ReactMapGL>
         </section>
     );
