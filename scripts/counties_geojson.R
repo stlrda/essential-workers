@@ -13,6 +13,9 @@ MOIL <-
 
 st_write(MOIL, 'data/geojson/MO_IL_Counties.geojson')
 
+st_write(filter(MOIL, STATEFP == '29'), 'data/geojson/MO_Counties.geojson')
+st_write(filter(MOIL, STATEFP == '17'), 'data/geojson/IL_Counties.geojson')
+
 MSA <- 
   MOIL %>%
   filter(
