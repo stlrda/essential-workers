@@ -6,8 +6,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
-import SkipNextIcon from '@material-ui/icons/SkipNext';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 
 import './ControlPanel.css';
 
@@ -55,13 +55,13 @@ export default function MediaControlCard() {
         </CardContent>
         <div className={classes.controls}>
           <IconButton aria-label="previous">
-            {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
+            {theme.direction === 'rtl' ? <NavigateNextIcon /> : <NavigateBeforeIcon />}
           </IconButton>
           <Typography variant="subtitle1" color="textSecondary">
             Missouri
           </Typography>
           <IconButton aria-label="next">
-            {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
+            {theme.direction === 'rtl' ? <NavigateBeforeIcon /> : <NavigateNextIcon />}
           </IconButton>
         </div>
       </div>
