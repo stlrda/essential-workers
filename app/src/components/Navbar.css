@@ -1,0 +1,23 @@
+@font-face {
+    font-family: Montserrat-ExtraBold;
+    src: local('Montserrat-ExtraBold'), url('../fonts/Montserrat-ExtraBold.ttf') format('tff');
+    color: black;
+  }
+
+.nav-button {
+  margin-left: 69% !important;
+  color: #1B365D !important;
+}
+  
+.MuiAppBar-colorPrimary {
+  background-color: #ffffff !important;
+}
+
+.MuiTypography-root.MuiTypography-h3 {
+  font-family: headline !important;
+  padding: 5px;
+}
+
+.MuiButtonBase-root.MuiButton-root.MuiButton-text.MuiButton-colorInherit {
+  text-align: right;
+}

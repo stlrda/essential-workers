@@ -1,0 +1,49 @@
+@font-face {
+  font-family: hero;
+  src: url('./fonts/Montserrat-ExtraBold.ttf');
+}
+
+@font-face {
+  font-family: footer;
+  src: url('./fonts/Montserrat-Light.ttf');
+}
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+}
+
+
+main, footer {
+  background-color: #e6e6e6;
+  margin: 0;
+  padding-top: 25%;
+  
+}
+
+section {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+p#map-summary {
+  font-size: 2em;
+  font-family: footer;
+  margin-top: -25%;
+  padding-top: 0%;
+  display: block;
+  margin-left: 30%;
+  margin-right: auto;
+  width: 50%;
+}
+
+p#table-summary {
+  font-size: 2em;
+  font-family: footer;
+  margin-top: 0px;
+  padding-top: 1em;
+  display: block;
+  margin-left: 30%;
+  margin-right: auto;
+  width: 50%;
+}
