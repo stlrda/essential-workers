@@ -1,0 +1,18 @@
+#ctable {
+    display: block;
+    margin-top: 4%;
+    margin-bottom: 0%;
+    margin-left: 30%;
+    margin-right: auto;
+    width: 66%;
+    
+    border-color: #1B365D;
+    border-width: thin;
+}
+
+#table-header {
+    background-color: #1B365D;
+    color: mintcream;
+    text-align: center;
+    font-size: 2em;
+}
