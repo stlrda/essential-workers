@@ -15,20 +15,6 @@ footer {
   
 .support-wrapper p {
     font-size: 1em;
-    font-family: description;
+    font-family: footer;
     line-height: 20px;
-}
-
-a:link {
-    text-decoration: underline;
-    color: rgb(0, 128, 119);
-}
-  
-a:visited {
-    text-decoration: underline;
-    color: rgb(0, 30, 71);
-}
-  
-a:hover {
-    text-decoration: underline;
 }

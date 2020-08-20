@@ -71,12 +71,12 @@ function App() {
       <Hero />
       <main>
         <ControlPanel tableNames={Object.keys(tables)} currentView={table} setTableView={setTableView}/>
-        <Typography id="summary">
+        <Typography variant="body1" id="map-summary">
           {map_summary[table]}
         </Typography>
         <Map />
         <Typography id="table-summary">
-        {table_summary[table]}
+          {table_summary[table]}
         </Typography>
         <Table rows={tables[table]}/>
       </main>

@@ -1,9 +1,3 @@
-@font-face {
-    font-family: Montserrat-ExtraBold;
-    src: local('Montserrat-ExtraBold'), url('../fonts/Montserrat-ExtraBold.ttf') format('tff');
-  }
-
-
 html, body {
     margin: 0px;
     padding: 0px;
@@ -22,10 +16,11 @@ html, body {
     opacity: 0.9;
   }
 
-  div#hero-image-area > h1 {
+  div#hero-image-area > h3 {
       position: absolute;
       color: white;
       font-weight: 900;
+      font-family: hero;
       font-size: 3em;
       text-align: left;
       margin-top: 4%;
