@@ -1,5 +1,9 @@
 import React from 'react';
 
+// Styles
+import './Table.css';
+
+// Material UI
 import Box from '@material-ui/core/Box';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
@@ -13,30 +17,15 @@ import Paper from '@material-ui/core/Paper';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
-import './Table.css';
 
-const data = require('../data/test.json');
-const rows = [
-  {title: "General", 
-rows: [data[2], data[12], data[19], data[20], data[21]]},
-{title: "Full/Part-time", 
-rows: [data[4], data[5]]},
-{title: "Race/Ethnicity", 
-rows: [data[7], data[8], data[9], data[10], data[11],]},
-{title: "Education Level", 
-rows: [data[14], data[15], data[16], data[17], data[18],]},
-{title: "Compensation and Benefits", 
-rows: [data[23], data[24], data[25]]},
-{title: "Family Responsibilities", 
-rows: [data[27], data[28]]},
-];
 
-console.log(data, rows);
+
 
 
 function CollapsibleRow(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
+  const symbol = row.title === "Totals" ? "" : "%";
 
   return (
     <>
@@ -58,26 +47,26 @@ function CollapsibleRow(props) {
                   <TableCell />
                   <TableCell>All Workers</TableCell>
                   <TableCell>All Frontline Industries</TableCell>
-                  <TableCell>Grocery, Convenience, and Drug Stores</TableCell>
+                  <TableCell>Grocery, Convenience, & Drug Stores</TableCell>
                   <TableCell>Public Transit</TableCell>
-                  <TableCell>Trucking, Warehouse, and Postal Service</TableCell>
+                  <TableCell>Trucking, Warehouse, & Postal Service</TableCell>
                   <TableCell>Health Care</TableCell>
-                  <TableCell>Child Care and Social Services</TableCell>
+                  <TableCell>Childcare & Social Services</TableCell>
                   <TableCell>Building Cleaning Services</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {row["rows"].map(row =>
                   <TableRow>
-                  <TableCell>{row["Demographics"]}</TableCell>
-                  <TableCell>{row["All Workers"]}%</TableCell>
-                  <TableCell>{row["All Frontline Industries"]}%</TableCell>
-                  <TableCell>{row["Grocery, Convenience, and Drug Stores"]}%</TableCell>
-                  <TableCell>{row["Public Transit"]}%</TableCell>
-                  <TableCell>{row["Trucking, Warehouse, and Postal Service"]}%</TableCell>
-                  <TableCell>{row["Health Care"]}%</TableCell>
-                  <TableCell>{row["Child Care and Social Services"]}%</TableCell>
-                  <TableCell>{row["Building Cleaning Services"]}%</TableCell>
+                  <TableCell>{row["index"]}</TableCell>
+                  <TableCell>{row["All Workers"] + symbol}</TableCell>
+                  <TableCell>{row["All Frontline Industries"] + symbol}</TableCell>
+                  <TableCell>{row["Grocery, Convenience, & Drug Stores"] + symbol}</TableCell>
+                  <TableCell>{row["Public Transit"] + symbol}</TableCell>
+                  <TableCell>{row["Trucking, Warehouse, & Postal Service"] + symbol}</TableCell>
+                  <TableCell>{row["Health Care"]+ symbol}</TableCell>
+                  <TableCell>{row["Childcare & Social Services"] + symbol}</TableCell>
+                  <TableCell>{row["Building Cleaning Services"] + symbol}</TableCell>
                   </TableRow>
                   )}
                 </TableBody>
@@ -91,7 +80,9 @@ function CollapsibleRow(props) {
 }
 
 
-function CollapsibleTable() {
+function CollapsibleTable(props) {
+  const { rows } = props;
+
   return (
     <TableContainer component={Paper}  id="ctable">
       <Table aria-label="collapsible table">
@@ -101,9 +92,7 @@ function CollapsibleTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <CollapsibleRow key={row.title} row={row} />
-          ))}
+          { rows.map((row) => <CollapsibleRow key={row.title} row={row} />) }
         </TableBody>
       </Table>
     </TableContainer>

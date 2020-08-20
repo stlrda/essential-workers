@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+// Styles
+import './ControlPanel.css';
+
+// Material UI
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -9,10 +13,16 @@ import Typography from '@material-ui/core/Typography';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 
-import './ControlPanel.css';
 
-const img = require('../images/river.jpg');
+const missouri_img = require('../images/river.jpg');
+const illinois_img = require('../images/bean.jpg');
+const stl_img = require('../images/arch.jpg');
 
+const images = {
+  Missouri :  {img: missouri_img, title: "Missouri river"},
+  Illinois : {img: illinois_img, title: "The Bean"},
+  "Saint Louis" : {img: stl_img, title: "The Arch"}
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,10 +51,28 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function MediaControlCard() {
+function ControlPanel(props) {
   const classes = useStyles();
-  const theme = useTheme();
 
+  const { tableNames, currentView, setTableView } = props;
+  const [tableName, setTableName] = React.useState(currentView);
+
+  const cycleToNextTable = (event) => {
+    let oldIndex = tableNames.indexOf(tableName);
+    let newIndex = tableNames[oldIndex + 1] === undefined ? 0 : oldIndex + 1;
+    let nextTable = tableNames[newIndex];
+    setTableName(nextTable);
+    setTableView(nextTable);
+  }
+
+  const cycleToPreviousTable = (event) => {
+    let oldIndex = tableNames.indexOf(tableName);
+    let newIndex = tableNames[oldIndex - 1] === undefined ? tableNames.length - 1 : oldIndex - 1;
+    let previousTable = tableNames[newIndex];
+    setTableName(previousTable);
+    setTableView(previousTable);
+  }
+  
   return (
     <Card className={classes.root} id="card">
       <div className={classes.details}>
@@ -54,22 +82,24 @@ export default function MediaControlCard() {
           </Typography>
         </CardContent>
         <div className={classes.controls}>
-          <IconButton aria-label="previous">
-            {theme.direction === 'rtl' ? <NavigateNextIcon /> : <NavigateBeforeIcon />}
+          <IconButton aria-label="previous" onClick={cycleToPreviousTable} value="previous">
+            <NavigateBeforeIcon />
           </IconButton>
           <Typography variant="subtitle1" color="textSecondary">
-            Missouri
+            {tableName}
           </Typography>
-          <IconButton aria-label="next">
-            {theme.direction === 'rtl' ? <NavigateBeforeIcon /> : <NavigateNextIcon />}
+          <IconButton id="a" aria-label="next" onClick={cycleToNextTable} value="next">
+             <NavigateNextIcon />
           </IconButton>
         </div>
       </div>
       <CardMedia
         className={classes.cover}
-        image={img}
-        title="Live from space album cover"
+        image={images[tableName].img}
+        title={images[tableName].title}
       />
     </Card>
   );
 }
+
+export default ControlPanel;
