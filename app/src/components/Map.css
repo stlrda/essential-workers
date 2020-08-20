@@ -1,0 +1,18 @@
+#root > main > section#map-section > div {
+    display: block;
+    margin-left: 30%;
+    margin-right: auto;
+    margin-bottom: 4%;
+    width: 50%;
+}
+
+.map {
+    margin-top: 4%;
+    border-style: solid;
+    border-width: thin;
+    border-color: midnightblue;
+}
+
+div.overlays {
+    visibility: hidden;
+}
