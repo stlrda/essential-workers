@@ -21,6 +21,10 @@ main, footer {
   
 }
 
+section {
+  text-align: justify;
+  text-justify: inter-word;
+}
 
 p#map-summary {
   font-size: 2em;
