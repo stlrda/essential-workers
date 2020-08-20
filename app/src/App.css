@@ -28,6 +28,7 @@ section {
 
 p#map-summary {
   font-size: 2em;
+  font-family: footer;
   margin-top: -25%;
   padding-top: 0%;
   display: block;
@@ -38,6 +39,7 @@ p#map-summary {
 
 p#table-summary {
   font-size: 2em;
+  font-family: footer;
   margin-top: 0px;
   padding-top: 1em;
   display: block;
