@@ -69,7 +69,7 @@ const Map = (props) => {
 
     return (
         <section id="map-section">
-          <ReactMapGL {...viewport} {...settings} className="map" transitionDuration={700} mapStyle="mapbox://styles/mapbox/streets-v11" onViewportChange={viewport => setViewport(viewport)} mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
+          <ReactMapGL {...viewport} {...settings} className="map" transitionDuration={700} mapStyle="mapbox://styles/mapbox/light-v10" onViewportChange={viewport => setViewport(viewport)} mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
               <Source type="geojson" data={overlays[table].geojson}>
                   <Layer {...dataLayer} />
               </Source>
