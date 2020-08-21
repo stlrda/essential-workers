@@ -1,5 +1,5 @@
 // Libraries
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // Material UI
 import Typography from '@material-ui/core/Typography';
@@ -56,33 +56,33 @@ const createRows = (data) =>
 
 function App() {
 
-  const tables = {
-    Missouri : createRows(missouri_json),
-    Illinois : createRows(illinois_json),
-    "Saint Louis" : createRows(stl_json),
-  }
+  const tableData = {
+    Missouri : { rows: createRows(missouri_json) },
+    Illinois : { rows: createRows(illinois_json) },
+    "Saint Louis" : { rows: createRows(stl_json) },
+  };
 
   const [table, setTableView] = React.useState("Missouri");
-
+  
 
   return (
     <>
       <Navbar/>
       <Hero />
       <main>
-        <ControlPanel tableNames={Object.keys(tables)} currentView={table} setTableView={setTableView}/>
+        <ControlPanel tableNames={Object.keys(tableData)} currentView={table} setTableView={setTableView}/>
         <section>
           <Typography variant="body1" id="map-summary">
             {map_summary[table]}
           </Typography>
         </section>
-        <Map />
+        <Map table={table}/>
         <section>
           <Typography id="table-summary">
             {table_summary[table]}
           </Typography>
         </section>
-        <Table rows={tables[table]}/>
+        <Table rows={tableData[table].rows}/>
       </main>
       <Footer />
     </>
