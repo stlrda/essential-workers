@@ -1,18 +1,49 @@
-#root > main > section#map-section > div {
+section#map-section {
     display: block;
     margin-left: 30%;
     margin-right: auto;
     margin-bottom: 4%;
+    margin-top: 4%;
     width: 50%;
 }
 
+
 .map {
-    margin-top: 4%;
+    margin-top: 0%;
     border-style: solid;
     border-width: thin;
     border-color: midnightblue;
+    position: fixed;
 }
 
-div.overlays {
-    visibility: hidden;
+#filter-section {
+    position: block;
+    margin-left: auto;
+    margin-right: 0%;
+    margin-top: 0.5%;
+    margin-bottom: auto;
+    width: 18%;
+    z-index: 10;
 }
+
+.tooltip {
+    position: absolute;
+    margin: 8px;
+    padding: 4px;
+    background: rgba(0, 3, 204, 0.8);
+    color: #fff;
+    max-width: 300px;
+    font-size: 10px;
+    z-index: 9;
+    pointer-events: none;
+  }
+
+
+/* The below code block puts a border around each child / div for the map, this helps illustrate discrepancies in alignment.  */
+/* section#map-section div {
+    
+    border-style: solid;
+    border-width: thin;
+    border-color: midnightblue;
+
+} */

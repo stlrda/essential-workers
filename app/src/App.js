@@ -1,5 +1,5 @@
 // Libraries
-import React, { useEffect } from 'react';
+import React from 'react';
 
 // Material UI
 import Typography from '@material-ui/core/Typography';
