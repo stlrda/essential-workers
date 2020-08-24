@@ -1,7 +1,7 @@
 // Libraries
 import React, {useState, useEffect} from 'react';
 import ReactMapGL, {Source, Layer} from "react-map-gl";
-import {Card, CardActions, Typography} from '@material-ui/core';
+import {Card, CardActions, CardContent, Typography} from '@material-ui/core';
 import {Radio, RadioGroup, FormControlLabel, FormControl, FormLabel} from '@material-ui/core';
 
 // Styles
@@ -11,6 +11,13 @@ import './Map.css';
 import stl_counties from '../data/geojson/STL_MSA_Counties.geojson';
 import mo_counties from '../data/geojson/MO_Counties.geojson';
 import il_counties from '../data/geojson/IL_Counties.geojson';
+
+const stops = {
+  "GDP":[65222,2417968,7349716,16857130,32631130,47496821,67701128,91380287,411671713],
+  "LaborForce":[964,14881,44273,101894,171051,281764,381084,524849,2765106],
+  "Unemployment":[2.27,3.61,4.62,5.41,6.17,7.21,8.57,10.08,15.91],
+  "MedianIncome":[23689,27750,30409,32875,35341,38019,40993,44732,50396]
+};
 
 
 const dataLayer = {
@@ -31,7 +38,7 @@ const dataLayer = {
           [80, '#d53e4f']
         ]
       },
-      'fill-opacity': 0.2
+      'fill-opacity': 0.5
     }
   };
 
@@ -99,6 +106,11 @@ const Map = (props) => {
 
             <ReactMapGL {...viewport} {...settings} className="map" onHover={onHover} transitionDuration={700} mapStyle="mapbox://styles/mapbox/light-v10" onViewportChange={viewport => setViewport(viewport)} mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
                 <Card id="filter-section">
+                  <CardContent>
+                    <Typography component="legend">
+                      Some stuff
+                    </Typography>
+                  </CardContent>
                   <CardActions>
                   <FormControl component="fieldset">
                     <FormLabel component="legend">Measures</FormLabel>
