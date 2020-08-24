@@ -83,7 +83,6 @@ const Map = (props) => {
         srcEvent: {offsetX, offsetY}
       } = event;
       const feature = features && features.find(f => f.layer.id === 'data');
-      console.log(feature);
       setHoveredFeature({feature, x: offsetX, y: offsetY});
     };
   

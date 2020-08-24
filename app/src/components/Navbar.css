@@ -1,7 +1,17 @@
-@font-face {
-    font-family: Montserrat-ExtraBold;
-    src: local('Montserrat-ExtraBold'), url('../fonts/Montserrat-ExtraBold.ttf') format('tff');
-    color: black;
+
+  a:link {
+    text-decoration: underline;
+    color: rgb(0, 128, 119);
+  }
+  
+  a:visited {
+    text-decoration: underline;
+    color: rgb(0, 30, 71);
+  
+  }
+  
+  a:hover {
+    text-decoration: underline;
   }
 
 .nav-button {
@@ -14,7 +24,7 @@
 }
 
 .MuiTypography-root.MuiTypography-h3 {
-  font-family: headline !important;
+  font-family: hero !important;
   padding: 5px;
 }
 
