@@ -18,7 +18,8 @@ county %<>% transmute(
     `GDP (Thousands of dollars)`,
     `Labor Force` = `In labor force`,
     `Unemployment Rate`,
-    `Median Income Essential Workers`
+    `Median Income Essential Workers`,
+    `Frontline Industry Rate`
   )
 
 MO %>%
