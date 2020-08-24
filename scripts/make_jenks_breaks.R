@@ -14,7 +14,8 @@ breaks <- list(
   GDP = classIntervals(MOIL$GDP..Thousands.of.dollars., 8, 'jenks')$brks,
   LaborForce = classIntervals(MOIL$Labor.Force, 8, 'jenks')$brks,
   Unemployment = classIntervals(MOIL$Unemployment.Rate, 8, 'jenks')$brks,
-  MedianIncome = classIntervals(MOIL$Median.Income.Essential.Workers, 8, 'jenks')$brks
+  MedianIncome = classIntervals(MOIL$Median.Income.Essential.Workers, 8, 'jenks')$brks,
+  FrontlineRate = classIntervals(MOIL$Frontline.Industry.Rate, 8, 'jenks')$brks
 ) %>% toJSON()
 
 print(breaks)
