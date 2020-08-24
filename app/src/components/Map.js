@@ -102,12 +102,11 @@ const Map = (props) => {
 
     return (
         <section id="map-section">
-
-            <ReactMapGL {...viewport} {...settings} className="map" onHover={onHover} transitionDuration={700} mapStyle="mapbox://styles/mapbox/light-v10" onViewportChange={viewport => setViewport(viewport)} mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
-                <Card id="filter-section">
+                          <Card id="filter-section">
                   <CardContent>
+                  
                     <Typography component="legend">
-                      Some stuff
+    {dataLayer.paint["fill-color"].stops.map(stop => <div height={40} width={40} backgroundColor={`${stop[1]}`}></div>)}
                     </Typography>
                   </CardContent>
                   <CardActions>
@@ -122,6 +121,9 @@ const Map = (props) => {
                     </FormControl>
                   </CardActions>
                 </Card>
+
+            <ReactMapGL {...viewport} {...settings} className="map" onHover={onHover} transitionDuration={700} mapStyle="mapbox://styles/mapbox/light-v10" onViewportChange={viewport => setViewport(viewport)} mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
+
                 <Source type="geojson" data={overlays[table].geojson}>
                     <Layer {...dataLayer} />
                 </Source>
