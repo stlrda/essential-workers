@@ -16,7 +16,7 @@ section#map-section {
 }
 
 #filter-section {
-    margin-left: 54%;
+    margin-left: 54.5%;
     margin-right: auto;
     margin-top: 0.5%;
     margin-bottom: auto;
@@ -33,7 +33,7 @@ section#map-section {
     background: #1B365D;
     color: #fff;
     max-width: 300px;
-    font-size: 10px;
+    font-size: 15px;
     z-index: 9;
     pointer-events: none;
   }

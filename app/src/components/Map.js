@@ -14,15 +14,15 @@ import il_counties from '../data/geojson/IL_Stats.geojson';
 
 
 const palette = [
-  '#3288bd',
-  '#66c2a5',
-  '#abdda4',
-  '#e6f598',
-  '#ffffbf',
-  '#fee08b',
-  '#fdae61',
-  '#f46d43',
-  '#d53e4f'
+  '#fbe9e7',
+  '#fecdbb',
+  '#fead8f',
+  '#fd8e62',
+  '#fd763e',
+  '#fc5f18',
+  '#f15914',
+  '#e3520e',
+  '#bd3e02'
 ];
 
 const stops = {
@@ -60,7 +60,7 @@ const Map = (props) => {
             property: radio,
             stops: stops[radio]
           },
-          'fill-opacity': 0.5
+          'fill-opacity': 0.7
         }
       };
 
