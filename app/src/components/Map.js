@@ -8,55 +8,66 @@ import {Radio, RadioGroup, FormControlLabel, FormControl, FormLabel} from '@mate
 import './Map.css';
 
 // Data
-import stl_counties from '../data/geojson/STL_MSA_Counties.geojson';
-import mo_counties from '../data/geojson/MO_Counties.geojson';
-import il_counties from '../data/geojson/IL_Counties.geojson';
+import stl_counties from '../data/geojson/MSA_Stats.geojson';
+import mo_counties from '../data/geojson/MO_Stats.geojson';
+import il_counties from '../data/geojson/IL_Stats.geojson';
+
+
+const palette = [
+  '#3288bd',
+  '#66c2a5',
+  '#abdda4',
+  '#e6f598',
+  '#ffffbf',
+  '#fee08b',
+  '#fdae61',
+  '#f46d43',
+  '#d53e4f'
+];
 
 const stops = {
-  "GDP":[65222,2417968,7349716,16857130,32631130,47496821,67701128,91380287,411671713],
-  "LaborForce":[964,14881,44273,101894,171051,281764,381084,524849,2765106],
-  "Unemployment":[2.27,3.61,4.62,5.41,6.17,7.21,8.57,10.08,15.91],
-  "MedianIncome":[23689,27750,30409,32875,35341,38019,40993,44732,50396]
+  "GDP (Thousands of dollars)" : [65222,2417968,7349716,16857130,32631130,47496821,67701128,91380287,411671713]
+    .map((stop, index) => [stop, palette[index]]),
+  "Labor Force": [964,14881,44273,101894,171051,281764,381084,524849,2765106]
+    .map((stop, index) => [stop, palette[index]]),
+  "Unemployment Rate": [2.27,3.61,4.62,5.41,6.17,7.21,8.57,10.08,15.91]
+    .map((stop, index) => [stop, palette[index]]),
+  "Median Income Essential Workers": [23689,27750,30409,32875,35341,38019,40993,44732,50396]
+    .map((stop, index) => [stop, palette[index]]),
+}
+
+
+
+const mapViews = {
+  Missouri : { latitude : 37.9643, longitude : -91.8318, zoom: 5, width: "66vw", height: "60vh", pitch: 0 },
+  Illinois : { latitude : 40.6331, longitude : -89.3985, zoom: 5, width: "66vw", height: "60vh", pitch: 0 },
+  "Saint Louis" : { latitude : 38.6264178, longitude : -90.1998378, zoom: 7, width: "66vw", height: "60vh", pitch: 0 },
 };
 
 
-const dataLayer = {
-    id: 'data',
-    type: 'fill',
-    paint: {
-      'fill-color': {
-        property: 'ALAND',
-        stops: [
-          [0, '#3288bd'],
-          [1, '#66c2a5'],
-          [2, '#abdda4'],
-          [3, '#e6f598'],
-          [4, '#ffffbf'],
-          [5, '#fee08b'],
-          [6, '#fdae61'],
-          [7, '#f46d43'],
-          [80, '#d53e4f']
-        ]
-      },
-      'fill-opacity': 0.5
-    }
-  };
-
-const overlays = {
-  Missouri : { geojson : mo_counties, dataLayer},
-  Illinois : { geojson : il_counties, dataLayer},
-  "Saint Louis" : { geojson : stl_counties , dataLayer},
-}
-
-  
 const Map = (props) => {
 
     const { table } = props;
 
-    const mapViews = {
-      Missouri : { latitude : 37.9643, longitude : -91.8318, zoom: 5, width: "66vw", height: "60vh", pitch: 0 },
-      Illinois : { latitude : 40.6331, longitude : -89.3985, zoom: 5, width: "66vw", height: "60vh", pitch: 0 },
-      "Saint Louis" : { latitude : 38.6264178, longitude : -90.1998378, zoom: 7, width: "66vw", height: "60vh", pitch: 0 },
+    const [radio, setRadio] = useState('GDP (Thousands of dollars)');
+
+    const dataLayer = 
+      {
+        id: 'data',
+        type: 'fill',
+        paint: {
+          'fill-color': {
+            property: radio,
+            stops: stops[radio]
+          },
+          'fill-opacity': 0.5
+        }
+      };
+
+    const overlays = {
+      Missouri : { geojson : mo_counties, dataLayer},
+      Illinois : { geojson : il_counties, dataLayer},
+      "Saint Louis" : { geojson : stl_counties , dataLayer},
     };
 
     const [viewport, setViewport] = useState({ ...mapViews[table] });
@@ -69,6 +80,10 @@ const Map = (props) => {
       minPitch: 0,
       maxPitch: 0
     });
+
+    const updateRadio = (event) => {
+      setRadio(event.target.value);
+    };
 
 
     useEffect(() => {
@@ -94,36 +109,32 @@ const Map = (props) => {
         feature && (
           <div className="tooltip" style={{left: x, top: y}}>
             <div>County: {feature.properties.NAME}</div>
+            <div>GDP: {feature.properties["GDP (Thousands of dollars)"]}</div>
+            <div>Labor Force: {feature.properties["Labor Force"]}</div>
+            <div>Unemployment: {feature.properties["Unemployment Rate"]}</div>
+            <div>Median Income: {feature.properties["Median Income Essential Workers"]}</div>
           </div>
         )
       );
-    }
+    };
 
 
     return (
         <section id="map-section">
-                          <Card id="filter-section">
-                  <CardContent>
-                  
-                    <Typography component="legend">
-    {dataLayer.paint["fill-color"].stops.map(stop => <div height={40} width={40} backgroundColor={`${stop[1]}`}></div>)}
-                    </Typography>
-                  </CardContent>
+                <Card id="filter-section">
                   <CardActions>
-                  <FormControl component="fieldset">
-                    <FormLabel component="legend">Measures</FormLabel>
-                    <RadioGroup aria-label="measures" name="measures1" value={"value"}>
-                      <FormControlLabel value="GDP" control={<Radio />} label="GDP" />
-                      <FormControlLabel value="LaborForce" control={<Radio />} label="Labor Force" />
-                      <FormControlLabel value="Unemployment" control={<Radio />} label="Unemployment" />
-                      <FormControlLabel value="MedianIncome" control={<Radio />} label="Median Income" />
-                    </RadioGroup>
+                    <FormControl component="fieldset">
+                      <FormLabel component="legend">Measures</FormLabel>
+                      <RadioGroup aria-label="measures" name="measures1" value={radio} onChange={updateRadio}>
+                        <FormControlLabel value="GDP (Thousands of dollars)" control={<Radio color="primary"/>} label="GDP" />
+                        <FormControlLabel value="Labor Force" control={<Radio color="primary"/>} label="Labor Force" />
+                        <FormControlLabel value="Unemployment Rate" control={<Radio color="primary"/>} label="Unemployment" />
+                        <FormControlLabel value="Median Income Essential Workers" control={<Radio color="primary"/>} label="Median Income" />
+                      </RadioGroup>
                     </FormControl>
                   </CardActions>
                 </Card>
-
             <ReactMapGL {...viewport} {...settings} className="map" onHover={onHover} transitionDuration={700} mapStyle="mapbox://styles/mapbox/light-v10" onViewportChange={viewport => setViewport(viewport)} mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
-
                 <Source type="geojson" data={overlays[table].geojson}>
                     <Layer {...dataLayer} />
                 </Source>
@@ -131,7 +142,7 @@ const Map = (props) => {
             </ReactMapGL>
         </section>
     );
-}
+};
 
 
 export default Map;

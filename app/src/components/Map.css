@@ -16,12 +16,13 @@ section#map-section {
 }
 
 #filter-section {
-    margin-left: auto;
-    margin-right: 0%;
+    margin-left: 54%;
+    margin-right: auto;
     margin-top: 0.5%;
     margin-bottom: auto;
-    width: 18%;
+    width: 12%;
     z-index: 10;
+    position: absolute;
 }
 
 
