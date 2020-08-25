@@ -38,7 +38,7 @@ const stops = {
     .map((stop, index) => [stop, palette[index]]),
     "Frontline Industry Rate": [2.47,11.89,16.55,20.93,25.88,32.72,41.34,49.47,73.92]
     .map((stop, index) => [stop, palette[index]]),
-}
+};
 
 
 
@@ -126,40 +126,38 @@ const Map = (props) => {
 
     return (
         <section id="map-section">
-                <div id="legend-area">
-      
-                    
-                      {
-                        dataLayer.paint['fill-color'].stops
-                          .map(stop => 
-                            <div className="legend"> 
-                              <div className="legend-values">{stop[0]}</div> <StopIcon className="legend-colors" style={{color : stop[1] }}/> 
-                            </div>
-                          )
-                      }
-                    
-                 
-                </div>          
-                <Card id="filter-section">
-                  <CardActions>
-                    <FormControl component="fieldset">
-                      <FormLabel component="legend">Measures</FormLabel>
-                      <RadioGroup aria-label="measures" name="measures1" value={radio} onChange={updateRadio}>
-                        <FormControlLabel value="GDP (Thousands of dollars)" control={<Radio color="primary"/>} label="GDP" />
-                        <FormControlLabel value="Labor Force" control={<Radio color="primary"/>} label="Labor Force" />
-                        <FormControlLabel value="Unemployment Rate" control={<Radio color="primary"/>} label="Unemployment" />
-                        <FormControlLabel value="Median Income Essential Workers" control={<Radio color="primary"/>} label="Median Income" />
-                        <FormControlLabel value="Frontline Industry Rate" control={<Radio color="primary"/>} label="Frontline Rate" />
-                      </RadioGroup>
-                    </FormControl>
-                  </CardActions>
-                </Card>
-            <ReactMapGL {...viewport} {...settings} className="map" onHover={onHover} transitionDuration={700} mapStyle="mapbox://styles/mapbox/light-v10" onViewportChange={viewport => setViewport(viewport)} mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
-                <Source type="geojson" data={overlays[table].geojson}>
-                    <Layer {...dataLayer} />
-                </Source>
-                {renderTooltip()}
-            </ReactMapGL>
+          <div id="legend-area-container">
+            <div id="legend-area"> 
+              {
+                dataLayer.paint['fill-color'].stops
+                  .map(stop => 
+                    <div className="legend"> 
+                      <div className="legend-values">{stop[0]}</div> <StopIcon className="legend-colors" style={{color : stop[1] }}/> 
+                    </div>
+                  )
+              }
+            </div>
+          </div>     
+          <Card id="filter-section">
+            <CardActions>
+              <FormControl component="fieldset">
+                <FormLabel component="legend">Measures</FormLabel>
+                <RadioGroup aria-label="measures" name="measures1" value={radio} onChange={updateRadio}>
+                  <FormControlLabel value="GDP (Thousands of dollars)" control={<Radio color="primary"/>} label="GDP" />
+                  <FormControlLabel value="Labor Force" control={<Radio color="primary"/>} label="Labor Force" />
+                  <FormControlLabel value="Unemployment Rate" control={<Radio color="primary"/>} label="Unemployment" />
+                  <FormControlLabel value="Median Income Essential Workers" control={<Radio color="primary"/>} label="Median Income" />
+                  <FormControlLabel value="Frontline Industry Rate" control={<Radio color="primary"/>} label="Frontline Rate" />
+                </RadioGroup>
+              </FormControl>
+            </CardActions>
+          </Card>
+          <ReactMapGL {...viewport} {...settings} className="map" onHover={onHover} transitionDuration={700} mapStyle="mapbox://styles/mapbox/light-v10" onViewportChange={viewport => setViewport(viewport)} mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
+              <Source type="geojson" data={overlays[table].geojson}>
+                  <Layer {...dataLayer} />
+              </Source>
+              {renderTooltip()}
+          </ReactMapGL>
         </section>
     );
 };
