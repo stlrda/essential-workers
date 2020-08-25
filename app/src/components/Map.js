@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from 'react';
 import ReactMapGL, {Source, Layer} from "react-map-gl";
 import StopIcon from '@material-ui/icons/Stop';
-import {Card, CardActions, CardContent, Typography} from '@material-ui/core';
+import {Card, CardActions} from '@material-ui/core';
 import {Radio, RadioGroup, FormControlLabel, FormControl, FormLabel} from '@material-ui/core';
 
 // Styles
@@ -26,6 +26,7 @@ const palette = [
   '#bd3e02'
 ];
 
+
 const stops = {
   "GDP (Thousands of dollars)" : [65222,2417968,7349716,16857130,32631130,47496821,67701128,91380287,411671713]
     .map((stop, index) => [stop, palette[index]]),
@@ -34,6 +35,8 @@ const stops = {
   "Unemployment Rate": [2.27,3.61,4.62,5.41,6.17,7.21,8.57,10.08,15.91]
     .map((stop, index) => [stop, palette[index]]),
   "Median Income Essential Workers": [23689,27750,30409,32875,35341,38019,40993,44732,50396]
+    .map((stop, index) => [stop, palette[index]]),
+    "Frontline Industry Rate": [2.47,11.89,16.55,20.93,25.88,32.72,41.34,49.47,73.92]
     .map((stop, index) => [stop, palette[index]]),
 }
 
@@ -114,6 +117,7 @@ const Map = (props) => {
             <div>Labor Force: {feature.properties["Labor Force"]}</div>
             <div>Unemployment: {feature.properties["Unemployment Rate"]}</div>
             <div>Median Income: {feature.properties["Median Income Essential Workers"]}</div>
+            <div>Frontline Rate: {feature.properties["Frontline Industry Rate"]}</div>
           </div>
         )
       );
@@ -145,6 +149,7 @@ const Map = (props) => {
                         <FormControlLabel value="Labor Force" control={<Radio color="primary"/>} label="Labor Force" />
                         <FormControlLabel value="Unemployment Rate" control={<Radio color="primary"/>} label="Unemployment" />
                         <FormControlLabel value="Median Income Essential Workers" control={<Radio color="primary"/>} label="Median Income" />
+                        <FormControlLabel value="Frontline Industry Rate" control={<Radio color="primary"/>} label="Frontline Rate" />
                       </RadioGroup>
                     </FormControl>
                   </CardActions>
