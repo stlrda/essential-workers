@@ -7,6 +7,7 @@ An analysis for essential workers in MO and St Louis.
 
 
 ## Groups
+<pre>
 All Workers (16+)
 Female
 Full/Part-time
@@ -35,3 +36,4 @@ Compensation and Benefits
 Family Responsibilities
      Child in home
      Senior (age 65+) in home
+</pre>
