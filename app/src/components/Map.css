@@ -25,17 +25,30 @@ section#map-section {
     position: absolute;
 }
 
-#legend-area {
-    margin-top: 30%;
+
+#legend-area-container {
+    margin-top: 0.5%;
     margin-bottom: auto;
-    margin-left: 10%;
+    margin-left: 1%;
     margin-right: auto;
     width: auto;
     height: auto;
+    position: absolute;
+}
+
+#legend-area {
+    /* margin-top: 30%; */
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(99, 98, 98);
+    text-align: center;
+    /* width: auto;
+    height: auto; */
     z-index: 1;
     position: absolute;
-    
-    background-color: rgba(255, 255, 255, 0);
+    /* max-width: 720px; */
+    background-color: rgb(255, 255, 255);
 }
 
 .legend {
@@ -46,7 +59,7 @@ section#map-section {
 
 .legend-values {
     display: inline-block;
-    margin-left: 2%;
+    margin-left: 2%; 
 }
 
 .legend-colors {
@@ -63,6 +76,7 @@ section#map-section {
     font-size: 15px;
     z-index: 9;
     pointer-events: none;
+    font-family: footer;
   }
 
 

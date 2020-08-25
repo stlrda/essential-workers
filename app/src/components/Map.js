@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from 'react';
 import ReactMapGL, {Source, Layer} from "react-map-gl";
 import StopIcon from '@material-ui/icons/Stop';
-import {Card, CardActions} from '@material-ui/core';
+import {Card, CardActions, Typography} from '@material-ui/core';
 import {Radio, RadioGroup, FormControlLabel, FormControl, FormLabel} from '@material-ui/core';
 
 // Styles
@@ -15,15 +15,15 @@ import il_counties from '../data/geojson/IL_Stats.geojson';
 
 
 const palette = [
-  '#fbe9e7',
-  '#fecdbb',
-  '#fead8f',
-  '#fd8e62',
-  '#fd763e',
-  '#fc5f18',
-  '#f15914',
-  '#e3520e',
-  '#bd3e02'
+  '#ffffd9',
+  '#edf8b1',
+  '#c7e9b4',
+  '#7fcdbb',
+  '#41b6c4',
+  '#1d91c0',
+  '#225ea8',
+  '#253494',
+  '#081d58'
 ];
 
 
@@ -127,7 +127,8 @@ const Map = (props) => {
     return (
         <section id="map-section">
           <div id="legend-area-container">
-            <div id="legend-area"> 
+            <div id="legend-area">
+              <Typography style={{marginBottom : "10%" }}>Legend</Typography>
               {
                 dataLayer.paint['fill-color'].stops
                   .map(stop => 
