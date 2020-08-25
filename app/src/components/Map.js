@@ -1,6 +1,7 @@
 // Libraries
 import React, {useState, useEffect} from 'react';
 import ReactMapGL, {Source, Layer} from "react-map-gl";
+import StopIcon from '@material-ui/icons/Stop';
 import {Card, CardActions, CardContent, Typography} from '@material-ui/core';
 import {Radio, RadioGroup, FormControlLabel, FormControl, FormLabel} from '@material-ui/core';
 
@@ -40,7 +41,7 @@ const stops = {
 
 const mapViews = {
   Missouri : { latitude : 37.9643, longitude : -91.8318, zoom: 5, width: "66vw", height: "60vh", pitch: 0 },
-  Illinois : { latitude : 40.6331, longitude : -89.3985, zoom: 5, width: "66vw", height: "60vh", pitch: 0 },
+  Illinois : { latitude : 39.6331, longitude : -88.3985, zoom: 5, width: "66vw", height: "60vh", pitch: 0 },
   "Saint Louis" : { latitude : 38.6264178, longitude : -90.1998378, zoom: 7, width: "66vw", height: "60vh", pitch: 0 },
 };
 
@@ -51,18 +52,17 @@ const Map = (props) => {
 
     const [radio, setRadio] = useState('GDP (Thousands of dollars)');
 
-    const dataLayer = 
-      {
-        id: 'data',
-        type: 'fill',
-        paint: {
-          'fill-color': {
-            property: radio,
-            stops: stops[radio]
-          },
-          'fill-opacity': 0.7
-        }
-      };
+    const dataLayer = {
+      id: 'data',
+      type: 'fill',
+      paint: {
+        'fill-color': {
+          property: radio,
+          stops: stops[radio]
+        },
+        'fill-opacity': 0.7
+      }
+    };
 
     const overlays = {
       Missouri : { geojson : mo_counties, dataLayer},
@@ -80,6 +80,7 @@ const Map = (props) => {
       minPitch: 0,
       maxPitch: 0
     });
+
 
     const updateRadio = (event) => {
       setRadio(event.target.value);
@@ -121,6 +122,20 @@ const Map = (props) => {
 
     return (
         <section id="map-section">
+                <div id="legend-area">
+      
+                    
+                      {
+                        dataLayer.paint['fill-color'].stops
+                          .map(stop => 
+                            <div className="legend"> 
+                              <div className="legend-values">{stop[0]}</div> <StopIcon className="legend-colors" style={{color : stop[1] }}/> 
+                            </div>
+                          )
+                      }
+                    
+                 
+                </div>          
                 <Card id="filter-section">
                   <CardActions>
                     <FormControl component="fieldset">

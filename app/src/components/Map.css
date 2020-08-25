@@ -25,6 +25,33 @@ section#map-section {
     position: absolute;
 }
 
+#legend-area {
+    margin-top: 30%;
+    margin-bottom: auto;
+    margin-left: 10%;
+    margin-right: auto;
+    width: auto;
+    height: auto;
+    z-index: 1;
+    position: absolute;
+    
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.legend {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.legend-values {
+    display: inline-block;
+    margin-left: 2%;
+}
+
+.legend-colors {
+    vertical-align: middle;
+}
 
 .tooltip {
     position: absolute;
