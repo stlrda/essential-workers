@@ -43,8 +43,8 @@ const stops = {
 
 
 const mapViews = {
-  Missouri : { latitude : 37.9643, longitude : -91.8318, zoom: 5, width: "66vw", height: "60vh", pitch: 0 },
-  Illinois : { latitude : 39.6331, longitude : -88.3985, zoom: 5, width: "66vw", height: "60vh", pitch: 0 },
+  Missouri : { latitude : 37.9643, longitude : -91.8318, zoom: 5, width: "100%", height: "100%", pitch: 0 },
+  Illinois : { latitude : 39.6331, longitude : -88.3985, zoom: 5, width: "100%", height: "100%", pitch: 0 },
   "Saint Louis" : { latitude : 38.6264178, longitude : -90.1998378, zoom: 7, width: "66vw", height: "60vh", pitch: 0 },
 };
 

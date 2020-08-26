@@ -67,26 +67,35 @@ function App() {
   
 
   return (
-    <>
-      <Navbar/>
-      <Hero />
-      <main>
-        <ControlPanel tableNames={Object.keys(tableData)} currentView={table} setTableView={setTableView}/>
-        <section>
+    <Grid container>
+
+      
+        <Navbar/>
+      
+
+      <Grid item md={12}>
+        <Hero />
+      </Grid>
+
+      <Grid container component="main">
+        <Grid item sm={3} md={3} lg={3}>
+          <ControlPanel tableNames={Object.keys(tableData)} currentView={table} setTableView={setTableView}/>
+        </Grid>
+        
+        <Grid item component="section" sm={9} md={9} lg={9}>
           <Typography variant="body1" id="map-summary">
             {map_summary[table]}
           </Typography>
-        </section>
-        <Map table={table}/>
-        <section>
+          <Map table={table}/>
           <Typography id="table-summary">
             {table_summary[table]}
           </Typography>
-        </section>
-        <Table rows={tableData[table].rows}/>
-      </main>
-      <Footer />
-    </>
+          <Table rows={tableData[table].rows}/>
+        </Grid>
+
+      </Grid>
+        <Footer />
+    </Grid>
   );
 }
 

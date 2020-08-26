@@ -4,6 +4,7 @@ import React from 'react';
 import './Table.css';
 
 // Material UI
+import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';

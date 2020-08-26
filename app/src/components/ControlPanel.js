@@ -35,9 +35,6 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flex: '1 0 auto',
   },
-  cover: {
-    width: 151,
-  },
   controls: {
     display: 'flex',
     alignItems: 'center',
@@ -88,13 +85,13 @@ function ControlPanel(props) {
           <Typography variant="subtitle1" color="textSecondary">
             {tableName}
           </Typography>
-          <IconButton id="a" aria-label="next" onClick={cycleToNextTable} value="next">
+          <IconButton aria-label="next" onClick={cycleToNextTable} value="next">
              <NavigateNextIcon />
           </IconButton>
         </div>
       </div>
       <CardMedia
-        className={classes.cover}
+        id="cover"
         image={images[tableName].img}
         title={images[tableName].title}
       />

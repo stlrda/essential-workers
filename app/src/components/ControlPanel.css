@@ -1,13 +1,13 @@
 #card {
-    margin-left: 5%;
-    height: 70%;
-    width: 20%;
+    margin-left: 7%;
+    height: 8%;
+    width: 78%;
     position: -webkit-sticky;
     position: sticky;
     top: 50%;
     background-image: linear-gradient(rgb(223, 223, 223), rgb(201, 201, 201), rgb(160, 160, 160));
 }
 
-#a {
-    z-index: 1;
+#cover {
+    width: 49%;
 }

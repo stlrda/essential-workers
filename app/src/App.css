@@ -29,12 +29,9 @@ section {
 p#map-summary {
   font-size: 2em;
   font-family: footer;
-  margin-top: -25%;
   padding-top: 0%;
-  display: block;
-  margin-left: 30%;
-  margin-right: auto;
-  width: 50%;
+  margin-top: -25%;
+  width: 90%;
 }
 
 p#table-summary {
@@ -42,8 +39,5 @@ p#table-summary {
   font-family: footer;
   margin-top: 0px;
   padding-top: 1em;
-  display: block;
-  margin-left: 30%;
-  margin-right: auto;
-  width: 50%;
+  width: 90%;
 }
