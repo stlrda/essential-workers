@@ -33,26 +33,20 @@ section#map-section {
     margin-right: auto;
     width: auto;
     height: auto;
-    position: absolute;
-    
-    
+    position: absolute; 
 }
 
 #legend-area {
-    /* margin-top: 30%; */
     margin-bottom: auto;
     margin-left: auto;
     margin-right: auto;
     border-radius: 5px;
     padding: 5px;
     color: rgb(99, 98, 98);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     text-align: center;
-    /* width: auto;
-    height: auto; */
     z-index: 1;
     position: absolute;
-    /* max-width: 720px; */
     background-color: rgb(255, 255, 255);
 }
 
