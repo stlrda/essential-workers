@@ -43,9 +43,9 @@ const stops = {
 
 
 const mapViews = {
-  Missouri : { latitude : 37.9643, longitude : -91.8318, zoom: 5, width: "100%", height: "100%", pitch: 0 },
-  Illinois : { latitude : 39.6331, longitude : -88.3985, zoom: 5, width: "100%", height: "100%", pitch: 0 },
-  "Saint Louis" : { latitude : 38.6264178, longitude : -90.1998378, zoom: 7, width: "66vw", height: "60vh", pitch: 0 },
+  Missouri : { latitude : 37.9643, longitude : -91.8318, zoom: 5 },
+  Illinois : { latitude : 39.6331, longitude : -88.3985, zoom: 5 },
+  "Saint Louis" : { latitude : 38.6264178, longitude : -90.1998378, zoom: 7},
 };
 
 
@@ -73,7 +73,7 @@ const Map = (props) => {
       "Saint Louis" : { geojson : stl_counties , dataLayer},
     };
 
-    const [viewport, setViewport] = useState({ ...mapViews[table] });
+    const [viewport, setViewport] = useState({ ...mapViews[table],  width: "100%", height: "100%", pitch: 0 });
     const [hoveredFeature, setHoveredFeature] = useState({ feature: null });
 
     const [settings] = useState({
@@ -91,7 +91,7 @@ const Map = (props) => {
 
 
     useEffect(() => {
-      setViewport({...mapViews[table]})
+      setViewport({...viewport, ...mapViews[table]})
       // eslint-disable-next-line
     }, [table]);
 
@@ -153,7 +153,17 @@ const Map = (props) => {
               </FormControl>
             </CardActions>
           </Card>
-          <ReactMapGL {...viewport} {...settings} className="map" onHover={onHover} transitionDuration={700} mapStyle="mapbox://styles/mapbox/light-v10" onViewportChange={viewport => setViewport(viewport)} mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}>
+          <ReactMapGL 
+            {...viewport}
+            {...settings}
+            className="map"
+            onHover={onHover}
+            onResize={({width, height}) => console.log(width, height)}
+            transitionDuration={700}
+            mapStyle="mapbox://styles/mapbox/light-v10"
+            onViewportChange={viewport => setViewport(viewport)}
+            mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+            >
               <Source type="geojson" data={overlays[table].geojson}>
                   <Layer {...dataLayer} />
               </Source>

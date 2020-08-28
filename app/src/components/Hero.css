@@ -2,25 +2,74 @@ html, body {
     margin: 0px;
     padding: 0px;
     background-image: url('../images/essential-worker.jpg');
-    background-color: #e6e6e6; /* Used if the image is unavailable */
+    background-color: #e6e6e6;
     background-attachment: fixed;
-    background-position: 0% 0%; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: 100vw 100vh; /* Resize the background image to cover the entire container */
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    background-size: 100vw auto;
+}
+
+
+div#hero-image-area {
+  height: 45vh;
+  width: 45vw;
+  background-color:#1B365D;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+}
+
+
+div#hero-image-area > h3 {
+    color: white;
+    font-weight: 900;
+    font-family: hero;
+    font-size: 3.5vw;
+    text-align: left;
+    padding-left: 2%;
+}
+
+
+@media screen and (max-width: 1920px) {
+  div#hero-image-area > h3 {
+    font-size: 3vw;  
+  }
+}
+
+/* @media screen and (max-width: 1680px) {
+  div#hero-image-area > h3 {
+    font-size: 2vw;  
+  }
+} */
+
+
+@media screen and (max-width: 768px) {
+  html, body {
+    background-position: 0% 12%;
   }
 
   div#hero-image-area {
-    height: 45vh;
-    width: 45vw;
-    background-color:#1B365D;
-    opacity: 0.9;
+    height: 30vh;
   }
 
   div#hero-image-area > h3 {
-      /* position: relative; */
-      color: white;
-      font-weight: 900;
-      font-family: hero;
-      font-size: 3vw;
-      text-align: left;
+    font-size: 4vw;  
   }
+}
+
+
+@media screen and (max-width: 320px) {
+
+  html, body {
+    background-position: 0% 8%;
+  }
+
+  div#hero-image-area {
+    height: 25vh;
+  }
+}
+
+
+
+
+

@@ -1,6 +1,6 @@
 #card {
-    margin-left: 7%;
-    height: 8%;
+    margin-left: 10%;
+    height: auto;
     width: 78%;
     position: -webkit-sticky;
     position: sticky;
@@ -11,3 +11,10 @@
 #cover {
     width: 49%;
 }
+
+/* iPad Pro */
+@media screen and (max-width: 1024px) {
+    #card {
+        visibility: hidden;
+    }
+  }

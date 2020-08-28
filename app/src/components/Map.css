@@ -1,8 +1,11 @@
 section#map-section {
+    margin-left: 2%;
     margin-bottom: 4%;
     margin-top: 4%;
     width: 90%;
     height: 66vh;
+    
+    
 }
 
 
@@ -11,8 +14,9 @@ section#map-section {
     border-style: solid;
     border-width: thin;
     border-color: #1B365D;
-    position: fixed;
     width: 90%;
+    
+    
 }
 
 #filter-section {

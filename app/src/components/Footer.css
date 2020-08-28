@@ -1,19 +1,29 @@
 footer {
     padding-top: 3%;
     padding-bottom: 3%;
-    width: 100%;
 }
-
-.support-wrapper {
-    display: inline-flex;
-    flex-wrap: nowrap;
-    align-self: center;
-    margin-left: 15%;
-    margin-right: 15%;
-  }
   
-.support-wrapper p {
+footer p {
+    padding-top: 2%;
+    padding-right: 4%;
+    padding-left: 4%;
     font-size: 1em;
     font-family: footer;
     line-height: 20px;
 }
+
+footer img {
+    width: 50%;
+    height: auto;
+    padding: 5%;
+    margin: 0%;
+}
+
+/* iPad Pro */
+@media screen and (max-width: 1024px) {
+    footer img {
+        width: 55%;
+        height: auto;
+        padding: 15%;
+    }
+  }

@@ -15,7 +15,7 @@ const Navbar = () => {
           <img id="logo" src={RDALogo} alt="Regional Data Alliance Logo"/>
         </a>
         <Button className="nav-button">
-          <a href="https://github.com/stlrda/REDB-Workflows/blob/master/PrclCode.zip?raw=true">
+          <a id="download" href="https://github.com/stlrda/REDB-Workflows/blob/master/PrclCode.zip?raw=true">
             Download Data
           </a>
         </Button>

@@ -1,5 +1,5 @@
 // Libraries
-import React from 'react';
+import React, {useRef, useState, useLayoutEffect} from 'react';
 
 // Material UI
 import Grid from '@material-ui/core/Grid';
@@ -63,38 +63,40 @@ function App() {
     "Saint Louis" : { rows: createRows(stl_json) },
   };
 
-  const [table, setTableView] = React.useState("Missouri");
-  
+  const [table, setTableView] = useState("Missouri");
 
+  
   return (
     <Grid container>
-
-      
-        <Navbar/>
-      
+      <Navbar/>
 
       <Grid item md={12}>
         <Hero />
       </Grid>
 
       <Grid container component="main">
-        <Grid item sm={3} md={3} lg={3}>
+        <Grid item lg={3} xl={3}>
           <ControlPanel tableNames={Object.keys(tableData)} currentView={table} setTableView={setTableView}/>
         </Grid>
         
-        <Grid item component="section" sm={9} md={9} lg={9}>
+        <Grid item component="section" sm={12} md={12} lg={9} xl={9}>
+
           <Typography variant="body1" id="map-summary">
             {map_summary[table]}
           </Typography>
-          <Map table={table}/>
-          <Typography id="table-summary">
-            {table_summary[table]}
-          </Typography>
-          <Table rows={tableData[table].rows}/>
+          
+          {/* <Map table={table}/>
+
+          <Table rows={tableData[table].rows}/> */}
+
         </Grid>
 
+        <Grid item component="section" sm={12} md={12} lg={12} xl={12}>
+          <Footer />
+        </Grid>
+        
       </Grid>
-        <Footer />
+
     </Grid>
   );
 }

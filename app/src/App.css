@@ -14,11 +14,17 @@ html, body {
 }
 
 
-main, footer {
+main {
   background-color: #f6f8fa;
   margin: 0;
   padding-top: 25%;
   
+}
+
+footer {
+  margin: 0;
+  padding-top: 25%;
+  margin-bottom: 0%;
 }
 
 section {
@@ -27,6 +33,7 @@ section {
 }
 
 p#map-summary {
+  margin-left: 2%;
   font-size: 2em;
   font-family: footer;
   padding-top: 0%;
@@ -37,6 +44,7 @@ p#map-summary {
 p#table-summary {
   font-size: 2em;
   font-family: footer;
+  margin-left: 2%;
   margin-top: 0px;
   padding-top: 1em;
   width: 90%;
