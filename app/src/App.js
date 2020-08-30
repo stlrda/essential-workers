@@ -3,6 +3,7 @@ import React, {useRef, useState, useLayoutEffect} from 'react';
 
 // Material UI
 import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
 
 // Styles
@@ -14,13 +15,20 @@ import Footer from './components/Footer';
 import Map from './components/Map';
 import Hero from './components/Hero';
 import Table from './components/Table';
-import ControlPanel from './components/ControlPanel';
+import StickyControlPanel from './components/StickyControlPanel';
 
 // Data
 const {map_summary, table_summary} = require('./data/Constants')
 const missouri_json = require('./data/missouri.json');
 const illinois_json = require('./data/illinois.json');
 const stl_json = require('./data/stl.json');
+
+// Breakpoints
+// xs, extra-small: 0px
+// sm, small: 600px
+// md, medium: 960px
+// lg, large: 1280px
+// xl, extra-large: 1920px
 
 const createRows = (data) => 
   [
@@ -75,9 +83,11 @@ function App() {
       </Grid>
 
       <Grid container component="main">
-        <Grid item lg={3} xl={3}>
-          <ControlPanel tableNames={Object.keys(tableData)} currentView={table} setTableView={setTableView}/>
-        </Grid>
+        <Hidden mdDown>
+          <Grid item lg={3} xl={3}>
+            <StickyControlPanel tableNames={Object.keys(tableData)} currentView={table} setTableView={setTableView}/>
+          </Grid>
+        </Hidden>
         
         <Grid item component="section" sm={12} md={12} lg={9} xl={9}>
 
@@ -85,9 +95,13 @@ function App() {
             {map_summary[table]}
           </Typography>
           
-          {/* <Map table={table}/>
+          {/* <Map table={table}/> */}
 
-          <Table rows={tableData[table].rows}/> */}
+          <Typography variant="body1" id="table-summary">
+            {table_summary[table]}
+          </Typography>
+
+          {/* <Table rows={tableData[table].rows}/> */}
 
         </Grid>
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Styles
-import './ControlPanel.css';
+import './StickyControlPanel.css';
 
 // Material UI
 import { makeStyles } from '@material-ui/core/styles';
@@ -41,14 +41,10 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: theme.spacing(1),
     paddingBottom: theme.spacing(1),
   },
-  playIcon: {
-    height: 38,
-    width: 38,
-  },
 }));
 
 
-function ControlPanel(props) {
+function StickyControlPanel(props) {
   const classes = useStyles();
 
   const { tableNames, currentView, setTableView } = props;
@@ -90,13 +86,11 @@ function ControlPanel(props) {
           </IconButton>
         </div>
       </div>
-      <CardMedia
+      <img src={images[tableName].img} title={images[tableName].title}
         id="cover"
-        image={images[tableName].img}
-        title={images[tableName].title}
       />
     </Card>
   );
 }
 
-export default ControlPanel;
+export default StickyControlPanel;
