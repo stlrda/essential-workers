@@ -1,5 +1,5 @@
 // Libraries
-import React, {useRef, useState, useLayoutEffect} from 'react';
+import React, {useState} from 'react';
 
 // Material UI
 import Grid from '@material-ui/core/Grid';

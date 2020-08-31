@@ -7,9 +7,7 @@ import './StickyControlPanel.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 
@@ -86,7 +84,7 @@ function StickyControlPanel(props) {
           </IconButton>
         </div>
       </div>
-      <img src={images[tableName].img} title={images[tableName].title} id="cover"/>
+      <img id="cover" src={images[tableName].img} title={images[tableName].title} alt=""/>
     </Card>
   );
 }
