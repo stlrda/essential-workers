@@ -1,5 +1,5 @@
 // Libraries
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 // Material UI
 import Grid from '@material-ui/core/Grid';
@@ -72,6 +72,32 @@ function App() {
   };
 
   const [table, setTableView] = useState("Missouri");
+  const [dimensions, setDimensions] = useState({ 
+    height: window.innerHeight,
+    width: window.innerWidth
+  });
+
+  const renderMap = () => {
+    return <Map table={table} dimensions={dimensions}/>
+  };
+
+  const [hey, setHey] = useState(() => renderMap);
+
+  const handleResize = () => {
+    setDimensions({
+      height: window.innerHeight,
+      width: window.innerWidth
+    });
+    console.log('resized to: ', window.innerWidth, 'x', window.innerHeight);
+    setHey(() => renderMap);
+  };
+
+
+  useEffect(() => {
+      window.addEventListener('resize', handleResize);
+  });
+
+
 
   
   return (
@@ -95,13 +121,13 @@ function App() {
             {map_summary[table]}
           </Typography>
           
-          {/* <Map table={table}/> */}
+           {hey()}
 
           <Typography variant="body1" id="table-summary">
             {table_summary[table]}
           </Typography>
 
-          <Table rows={tableData[table].rows}/>
+          {/* <Table rows={tableData[table].rows}/> */}
 
         </Grid>
 

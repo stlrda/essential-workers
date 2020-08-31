@@ -51,9 +51,10 @@ const mapViews = {
 
 const Map = (props) => {
 
-    const { table } = props;
+    const { table, dimensions } = props;
 
     const [radio, setRadio] = useState('GDP (Thousands of dollars)');
+    
 
     const dataLayer = {
       id: 'data',
@@ -85,15 +86,20 @@ const Map = (props) => {
     });
 
 
+
     const updateRadio = (event) => {
       setRadio(event.target.value);
     };
+
+
 
 
     useEffect(() => {
       setViewport({...viewport, ...mapViews[table]})
       // eslint-disable-next-line
     }, [table]);
+
+
 
 
     const onHover = event => {
@@ -132,8 +138,8 @@ const Map = (props) => {
               {
                 dataLayer.paint['fill-color'].stops
                   .map(stop => 
-                    <div className="legend"> 
-                      <div className="legend-values">{stop[0]}</div> <StopIcon className="legend-colors" style={{color : stop[1] }}/> 
+                    <div key={stop[0]} className="legend"> 
+                      <div key={stop[0]} className="legend-values">{stop[0]}</div> <StopIcon className="legend-colors" style={{color : stop[1] }}/> 
                     </div>
                   )
               }
@@ -158,7 +164,6 @@ const Map = (props) => {
             {...settings}
             className="map"
             onHover={onHover}
-            onResize={({width, height}) => console.log(width, height)}
             transitionDuration={700}
             mapStyle="mapbox://styles/mapbox/light-v10"
             onViewportChange={viewport => setViewport(viewport)}
