@@ -13,6 +13,11 @@ footer img {
 }
 
 
+footer p {
+    font-size: 1.5vw;
+}
+
+
 @media screen and (max-width: 1024px) {
 
     footer p {

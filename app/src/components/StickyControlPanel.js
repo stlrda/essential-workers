@@ -70,25 +70,23 @@ function StickyControlPanel(props) {
     <Card className={classes.root} id="card">
       <div className={classes.details}>
         <CardContent className={classes.content}>
-          <Typography component="h5" variant="h5">
+          <h5 id="ControlPanelTitle">
             Geography
-          </Typography>
+          </h5>
         </CardContent>
         <div className={classes.controls}>
           <IconButton aria-label="previous" onClick={cycleToPreviousTable} value="previous">
             <NavigateBeforeIcon />
           </IconButton>
-          <Typography variant="subtitle1" color="textSecondary">
+          <p id="ControlPanelDesc">
             {tableName}
-          </Typography>
+          </p>
           <IconButton aria-label="next" onClick={cycleToNextTable} value="next">
              <NavigateNextIcon />
           </IconButton>
         </div>
       </div>
-      <img src={images[tableName].img} title={images[tableName].title}
-        id="cover"
-      />
+      <img src={images[tableName].img} title={images[tableName].title} id="cover"/>
     </Card>
   );
 }
