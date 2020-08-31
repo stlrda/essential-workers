@@ -1,18 +1,93 @@
-#root > main > section#map-section > div {
-    display: block;
-    margin-left: 30%;
-    margin-right: auto;
+section#map-section {
+    margin-left: 2%;
     margin-bottom: 4%;
-    width: 50%;
+    margin-top: 4%;
+    width: 90%;
+    height: 66vh;
+    
+    
 }
 
+
 .map {
-    margin-top: 4%;
+    margin-top: 0%;
+    border-style: solid;
+    border-width: thin;
+    border-color: #1B365D;
+    width: 90%;
+    
+    
+}
+
+#filter-section {
+    margin-left: 54.5%;
+    margin-right: auto;
+    margin-top: 0.5%;
+    margin-bottom: auto;
+    width: 12%;
+    z-index: 10;
+    position: absolute;
+}
+
+
+#legend-area-container {
+    margin-top: 0.5%;
+    margin-bottom: auto;
+    margin-left: 1%;
+    margin-right: auto;
+    width: auto;
+    height: auto;
+    position: absolute; 
+}
+
+#legend-area {
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    padding: 5px;
+    color: rgb(99, 98, 98);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    z-index: 1;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+}
+
+.legend {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.legend-values {
+    display: inline-block;
+    margin-left: 2%; 
+}
+
+.legend-colors {
+    vertical-align: middle;
+}
+
+.tooltip {
+    position: absolute;
+    margin: 8px;
+    padding: 4px;
+    background: #1B365D;
+    color: #fff;
+    max-width: 300px;
+    font-size: 15px;
+    z-index: 9;
+    pointer-events: none;
+    font-family: footer;
+  }
+
+
+/* The below code block puts a border around each child / div for the map, this helps illustrate discrepancies in alignment.  */
+/* section#map-section div {
+    
     border-style: solid;
     border-width: thin;
     border-color: midnightblue;
-}
 
-div.overlays {
-    visibility: hidden;
-}
+} */

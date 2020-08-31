@@ -6,7 +6,7 @@ import { Toolbar, AppBar, Button } from '@material-ui/core'
 import './Navbar.css'
 import RDALogo from '../images/RDA-logo-FINAL_Horiz-full-color-revised.png'
 
-const Navbar = (props) => {
+const Navbar = () => {
 
   return (
     <AppBar position="sticky">
@@ -15,7 +15,9 @@ const Navbar = (props) => {
           <img id="logo" src={RDALogo} alt="Regional Data Alliance Logo"/>
         </a>
         <Button className="nav-button">
-          Download Data
+          <a id="download" href="https://github.com/stlrda/REDB-Workflows/blob/master/PrclCode.zip?raw=true">
+            Download Data
+          </a>
         </Button>
       </Toolbar>
     </AppBar>

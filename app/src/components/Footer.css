@@ -1,20 +1,39 @@
 footer {
     padding-top: 3%;
     padding-bottom: 3%;
-    width: 100%;
-    position: sticky;
+}
+  
+
+
+footer img {
+    width: 50%;
+    height: auto;
+    padding: 5%;
+    margin: 0%;
 }
 
-.support-wrapper {
-    display: inline-flex;
-    flex-wrap: nowrap;
-    align-self: center;
-    margin-left: 15%;
-    margin-right: 15%;
+
+footer p {
+    font-size: 1.5vw;
+}
+
+
+@media screen and (max-width: 1024px) {
+
+    footer p {
+        padding: 6%;
+    }
+
+    footer img {
+        padding: 15%;
+    }
+}
+
+
+@media screen and (max-width: 640px) {
+    footer p {
+        font-size: 4.5vw;
+    }
+  
   }
   
-.support-wrapper p {
-    font-size: 1em;
-    font-family: footer;
-    line-height: 20px;
-}

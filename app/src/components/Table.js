@@ -18,10 +18,6 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 
 
-
-
-
-
 function CollapsibleRow(props) {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
@@ -57,17 +53,17 @@ function CollapsibleRow(props) {
                 </TableHead>
                 <TableBody>
                   {row["rows"].map(row =>
-                  <TableRow>
-                  <TableCell>{row["index"]}</TableCell>
-                  <TableCell>{row["All Workers"] + symbol}</TableCell>
-                  <TableCell>{row["All Frontline Industries"] + symbol}</TableCell>
-                  <TableCell>{row["Grocery, Convenience, & Drug Stores"] + symbol}</TableCell>
-                  <TableCell>{row["Public Transit"] + symbol}</TableCell>
-                  <TableCell>{row["Trucking, Warehouse, & Postal Service"] + symbol}</TableCell>
-                  <TableCell>{row["Health Care"]+ symbol}</TableCell>
-                  <TableCell>{row["Childcare & Social Services"] + symbol}</TableCell>
-                  <TableCell>{row["Building Cleaning Services"] + symbol}</TableCell>
-                  </TableRow>
+                    <TableRow>
+                      <TableCell>{row["index"]}</TableCell>
+                      <TableCell>{row["All Workers"] + symbol}</TableCell>
+                      <TableCell>{row["All Frontline Industries"] + symbol}</TableCell>
+                      <TableCell>{row["Grocery, Convenience, & Drug Stores"] + symbol}</TableCell>
+                      <TableCell>{row["Public Transit"] + symbol}</TableCell>
+                      <TableCell>{row["Trucking, Warehouse, & Postal Service"] + symbol}</TableCell>
+                      <TableCell>{row["Health Care"]+ symbol}</TableCell>
+                      <TableCell>{row["Childcare & Social Services"] + symbol}</TableCell>
+                      <TableCell>{row["Building Cleaning Services"] + symbol}</TableCell>
+                    </TableRow>
                   )}
                 </TableBody>
               </Table>
