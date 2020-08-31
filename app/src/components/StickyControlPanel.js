@@ -72,7 +72,7 @@ function StickyControlPanel(props) {
             Geography
           </h5>
         </CardContent>
-        <div className={classes.controls}>
+        <div className={classes.controls} id="controls">
           <IconButton aria-label="previous" onClick={cycleToPreviousTable} value="previous">
             <NavigateBeforeIcon />
           </IconButton>

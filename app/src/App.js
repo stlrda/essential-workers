@@ -101,7 +101,7 @@ function App() {
             {table_summary[table]}
           </Typography>
 
-          {/* <Table rows={tableData[table].rows}/> */}
+          <Table rows={tableData[table].rows}/>
 
         </Grid>
 
