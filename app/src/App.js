@@ -73,28 +73,24 @@ function App() {
 
   const [table, setTableView] = useState("Missouri");
   const [dimensions, setDimensions] = useState({ 
-    height: window.innerHeight,
-    width: window.innerWidth
+    height: window.innerHeight * 0.60,
+    width: window.innerWidth * 0.60
   });
-
-  const renderMap = () => {
-    return <Map table={table} dimensions={dimensions}/>
-  };
-
-  const [hey, setHey] = useState(() => renderMap);
-
-  const handleResize = () => {
-    setDimensions({
-      height: window.innerHeight,
-      width: window.innerWidth
-    });
-    console.log('resized to: ', window.innerWidth, 'x', window.innerHeight);
-    setHey(() => renderMap);
-  };
 
 
   useEffect(() => {
+
+    function handleResize() {
+
+      setDimensions({
+        height: window.innerHeight * 0.60,
+        width: window.innerWidth * 0.60
+      });
+  
       window.addEventListener('resize', handleResize);
+      return window.removeEventListener('resize', handleResize);
+    };
+
   });
 
 
@@ -121,7 +117,7 @@ function App() {
             {map_summary[table]}
           </Typography>
           
-           {hey()}
+          <Map table={table} />
 
           <Typography variant="body1" id="table-summary">
             {table_summary[table]}

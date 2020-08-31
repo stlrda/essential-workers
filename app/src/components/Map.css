@@ -4,8 +4,6 @@ section#map-section {
     margin-top: 4%;
     width: 90%;
     height: 66vh;
-    
-    
 }
 
 
@@ -14,9 +12,7 @@ section#map-section {
     border-style: solid;
     border-width: thin;
     border-color: #1B365D;
-    width: 90%;
-    
-    
+    width: 100%;
 }
 
 #filter-section {
