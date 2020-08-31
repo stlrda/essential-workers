@@ -2,7 +2,7 @@
   "name": "essential-workers",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "https://apps.stldata.org/essential-workers",
+  "homepage": ".",
   "dependencies": {
     "@material-ui/core": "^4.9.14",
     "@material-ui/icons": "^4.9.1",
