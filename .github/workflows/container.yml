@@ -1,0 +1,14 @@
+name: Build Docker Images to Github Packages
+on: [push]
+jobs:
+    build-container:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@master
+        - name: Publish Container to Github Packages
+          uses: elgohr/Publish-Docker-Github-Action@master
+          with:
+            name: stlrda/essential-workers/essential-workers
+            username: ${{ github.actor }}
+            password: ${{ secrets.TOKEN }}
+            registry: docker.pkg.github.com
