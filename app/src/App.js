@@ -9,15 +9,14 @@ import Typography from '@material-ui/core/Typography';
 // Styles
 import './App.css';
 
-
 // Custom Components
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Map from './components/Map';
 import Hero from './components/Hero';
-import ScrollingTable from './components/ScrollingTable';
 import StaticControlPanel from './components/StaticControlPanel';
 import StickyControlPanel from './components/StickyControlPanel';
+import Map from './components/Map';
+import ScrollingTable from './components/ScrollingTable';
+import Footer from './components/Footer';
 
 // Data
 const {map_summary, table_summary} = require('./data/Constants')
@@ -110,7 +109,7 @@ function App() {
           <ScrollingTable rows={
             {columns: 
               [
-                {label: "", field: "index", ordering: "false", width: 200},
+                {label: "", field: "index", width: 200},
                 {label: "All Frontline Industries", field: "All Frontline Industries", width: 200},
                 {label: "All Workers", field: "All Workers", width: 200},
                 {label: "Building Cleaning Services", field: "Building Cleaning Services", width: 200},

@@ -1,3 +1,9 @@
+/* Overrides styling from mdbreact library */
+:focus {
+    outline: none !important;
+    outline-color: rgba(0, 0, 0, 0) !important;
+}
+
 #card {
     margin-left: 10%;
     height: 15vh;
@@ -12,6 +18,7 @@
 #controls {
    margin-top: -12%;
 }
+
 
 #cover {
     width: 45%;
@@ -31,9 +38,3 @@
     font-size: 1vw;
     font-family: footer;
 }
-
-/* @media screen and (max-width: 1024px) {
-    #card {
-        visibility: hidden;
-    }
-  } */

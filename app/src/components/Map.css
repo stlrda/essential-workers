@@ -93,7 +93,8 @@ section#map-section {
     vertical-align: middle;
 }
 
-.tooltip {
+/* Named with a "z" at the end as to not be overriden by mdbreact library. */
+.tooltipz {
     position: absolute;
     margin: 8px;
     padding: 4px;

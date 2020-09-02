@@ -2,8 +2,6 @@ footer {
     padding-top: 3%;
     padding-bottom: 3%;
 }
-  
-
 
 footer img {
     width: 50%;
@@ -12,7 +10,6 @@ footer img {
     margin: 0%;
 }
 
-
 footer p {
     font-size: 1.5vw;
     font-family: footer;
@@ -20,7 +17,6 @@ footer p {
 
 
 @media screen and (max-width: 1024px) {
-
     footer p {
         padding: 6%;
     }
@@ -35,6 +31,5 @@ footer p {
     footer p {
         font-size: 3.5vw;
     }
-  
-  }
+}
   
