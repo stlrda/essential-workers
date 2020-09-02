@@ -144,8 +144,8 @@ const Map = (props) => {
 
         <section id="map-section">
           <Hidden only={['xs', 'sm', 'md']}>
-            <div id="legend-area-container">
-              <div id="legend-area">
+            <div id="legend-area-container-large">
+              <div id="legend-area-large">
                 <Typography style={{marginBottom : "10%" }}>Legend</Typography>
                 {
                   dataLayer.paint['fill-color'].stops
@@ -157,7 +157,7 @@ const Map = (props) => {
                 }
               </div>
             </div>     
-            <Card id="filter-section">
+            <Card id="filter-section-large">
               <CardActions>
                 <FormControl component="fieldset">
                   <FormLabel component="legend">Measures</FormLabel>
@@ -197,7 +197,7 @@ const Map = (props) => {
                 dataLayer.paint['fill-color'].stops
                   .map(stop => 
                     <>
-                      <span key={stop[0]} className="legend-values-small">{stop[0]}</span> <StopIcon className="legend-colors-small" style={{color : stop[1] }}/> 
+                      <span key={stop[0]} className="legend-values">{stop[0]}</span> <StopIcon className="legend-colors" style={{color : stop[1] }}/> 
                     </>
                   )
               }

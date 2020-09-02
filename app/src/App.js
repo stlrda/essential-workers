@@ -110,24 +110,29 @@ function App() {
           <ScrollingTable rows={
             {columns: 
               [
-                {label: "", field: "index", sort: "asc", width: 200},
-                {label: "All Frontline Industries", field: "All Frontline Industries", sort: "asc", width: 200},
-                {label: "All Workers", field: "All Workers", sort: "asc", width: 200},
-                {label: "Building Cleaning Services", field: "Building Cleaning Services", sort: "asc", width: 200},
-                {label: "Childcare & Social Services", field: "Childcare & Social Services", sort: "asc", width: 200},
-                {label: "Grocery, Convenience, & Drug Stores", field: "Grocery, Convenience, & Drug Stores", sort: "asc", width: 200},
-                {label: "Health Care", field: "Health Care", sort: "asc", width: 200},
-                {label: "Public Transit", field: "Public Transit", sort: "asc", width: 200},
-                {label: "Trucking, Warehouse, & Postal Service", field: "Trucking, Warehouse, & Postal Service", sort: "asc", width: 200},
+                {label: "", field: "index", ordering: "false", width: 200},
+                {label: "All Frontline Industries", field: "All Frontline Industries", width: 200},
+                {label: "All Workers", field: "All Workers", width: 200},
+                {label: "Building Cleaning Services", field: "Building Cleaning Services", width: 200},
+                {label: "Childcare & Social Services", field: "Childcare & Social Services", width: 200},
+                {label: "Grocery, Convenience, & Drug Stores", field: "Grocery, Convenience, & Drug Stores", width: 200},
+                {label: "Health Care", field: "Health Care", width: 200},
+                {label: "Public Transit", field: "Public Transit", width: 200},
+                {label: "Trucking, Warehouse, & Postal Service", field: "Trucking, Warehouse, & Postal Service", width: 200},
               ]
             , rows:
             [
               ...tableData[table].rows[0].rows,
               ...tableData[table].rows[1].rows,
+              {"Childcare & Social Services": "Full Time"},
               ...tableData[table].rows[2].rows,
+              {"Childcare & Social Services": "Race/Ethnicity"},
               ...tableData[table].rows[3].rows,
+              {"Childcare & Social Services": "Education Level"},
               ...tableData[table].rows[4].rows,
+              {"Childcare & Social Services": "Compensation and Benefits"},
               ...tableData[table].rows[5].rows,
+              {"Childcare & Social Services": "Family Responsibilities"},
               ...tableData[table].rows[6].rows
             ]}
             }/>

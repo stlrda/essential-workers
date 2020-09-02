@@ -10,7 +10,7 @@ const Footer = (props) => {
 
   return (
     <Grid component="footer" container justify="center" spacing={0}>
-        <Grid component="p" item sm={12} md={5} lg={5}>
+        <Grid component="p" item sm={12} md={12} lg={5}>
 
         The Essential Workers project was developed by 
         the <a target="_blank" rel="noopener noreferrer" href="http://stldata.org">St. Louis Regional Data Alliance </a>
@@ -21,7 +21,7 @@ const Footer = (props) => {
         
         </Grid>
 
-        <Grid item sm={6} md={3} lg={3}>
+        <Grid item sm={6} md={6} lg={3}>
           <img src={rdaLogo} width="50%" height='auto'  alt='Regional Data Alliance Logo' />
           <img src={daughertyLogo} width="50%" height='auto' alt='Daugherty Business Solutions Logo' />
         </Grid>
