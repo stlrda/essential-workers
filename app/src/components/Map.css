@@ -1,5 +1,6 @@
 section#map-section {
-    margin-left: 2%;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 4%;
     margin-top: 4%;
     width: 90%;
@@ -16,15 +17,14 @@ section#map-section {
 }
 
 #filter-section {
-    margin-left: 54.5%;
-    margin-right: auto;
+    right: 4%;
     margin-top: 0.5%;
     margin-bottom: auto;
     width: 12%;
     z-index: 10;
     position: absolute;
+    
 }
-
 
 #legend-area-container {
     margin-top: 0.5%;
@@ -37,7 +37,7 @@ section#map-section {
 }
 
 #legend-area {
-    margin-bottom: auto;
+    margin-bottom: 0.5%;
     margin-left: auto;
     margin-right: auto;
     border-radius: 5px;
@@ -62,6 +62,43 @@ section#map-section {
 }
 
 .legend-colors {
+    vertical-align: middle;
+}
+
+#filter-section-small legend {
+    justify-content: center;
+    display: flex;
+}
+
+
+#filter-section-small {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    z-index: 10;
+    justify-content: center;
+    display: flex;
+}
+
+
+#legend-area-small {
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(99, 98, 98);
+    text-align: center;
+    z-index: 1;
+}
+
+.legend-small {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.legend-values-small {
+    margin-left: 2%; 
+}
+
+.legend-colors-small {
     vertical-align: middle;
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Styles
-import './Table.css';
+import './CollapsibleTable.css';
 
 // Material UI
 import Box from '@material-ui/core/Box';

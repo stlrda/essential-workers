@@ -1,6 +1,8 @@
 #ctable {
+    margin-top: 5%;
     margin-bottom: 0%;
-    margin-left: 2%;
+    margin-left: auto;
+    margin-right: auto;
     width: 90%;
     border-color: #1B365D;
     border-width: thin;
@@ -12,3 +14,4 @@
     text-align: center;
     font-size: 2em;
 }
+

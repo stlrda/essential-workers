@@ -1,0 +1,11 @@
+.static-controls-container {
+    display: flex;
+    justify-content: center;
+}
+
+#static-controls {
+    font-family: footer;
+    font-size: 4vw;
+    margin-top: 0%;
+    margin-bottom: 25%;
+}

@@ -1,0 +1,12 @@
+#thing {
+    margin-top: 5%;
+    margin-bottom: 0%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+  
+}
+
+.table-responsive {
+    max-width: calc(100vw);
+}

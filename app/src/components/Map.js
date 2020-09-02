@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from 'react';
 import ReactMapGL, {Source, Layer} from "react-map-gl";
 import StopIcon from '@material-ui/icons/Stop';
+import Hidden from '@material-ui/core/Hidden';
 import {Card, CardActions, Typography} from '@material-ui/core';
 import {Radio, RadioGroup, FormControlLabel, FormControl, FormLabel} from '@material-ui/core';
 
@@ -51,11 +52,10 @@ const mapViews = {
 
 const Map = (props) => {
 
-    const { table, dimensions } = props;
+    const { table } = props;
 
     const [radio, setRadio] = useState('GDP (Thousands of dollars)');
     
-
     const dataLayer = {
       id: 'data',
       type: 'fill',
@@ -86,20 +86,15 @@ const Map = (props) => {
     });
 
 
-
     const updateRadio = (event) => {
       setRadio(event.target.value);
     };
-
-
 
 
     useEffect(() => {
       setViewport({...viewport, ...mapViews[table]})
       // eslint-disable-next-line
     }, [table]);
-
-
 
 
     const onHover = event => {
@@ -131,34 +126,52 @@ const Map = (props) => {
 
 
     return (
+        <>
+        <Hidden lgUp>
+          <section id="filter-section-small">
+            <FormControl component="fieldset">
+              <FormLabel component="legend">Measures</FormLabel>
+              <RadioGroup aria-label="measures" name="measures1" value={radio} onChange={updateRadio} row>
+                <FormControlLabel value="GDP (Thousands of dollars)" control={<Radio color="primary"/>} label="GDP" />
+                <FormControlLabel value="Labor Force" control={<Radio color="primary"/>} label="Labor Force" />
+                <FormControlLabel value="Unemployment Rate" control={<Radio color="primary"/>} label="Unemployment" />
+                <FormControlLabel value="Median Income Essential Workers" control={<Radio color="primary"/>} label="Median Income" />
+                <FormControlLabel value="Frontline Industry Rate" control={<Radio color="primary"/>} label="Frontline Rate" />
+              </RadioGroup>
+            </FormControl>
+          </section>
+        </Hidden>
+
         <section id="map-section">
-          <div id="legend-area-container">
-            <div id="legend-area">
-              <Typography style={{marginBottom : "10%" }}>Legend</Typography>
-              {
-                dataLayer.paint['fill-color'].stops
-                  .map(stop => 
-                    <div key={stop[0]} className="legend"> 
-                      <div key={stop[0]} className="legend-values">{stop[0]}</div> <StopIcon className="legend-colors" style={{color : stop[1] }}/> 
-                    </div>
-                  )
-              }
-            </div>
-          </div>     
-          <Card id="filter-section">
-            <CardActions>
-              <FormControl component="fieldset">
-                <FormLabel component="legend">Measures</FormLabel>
-                <RadioGroup aria-label="measures" name="measures1" value={radio} onChange={updateRadio}>
-                  <FormControlLabel value="GDP (Thousands of dollars)" control={<Radio color="primary"/>} label="GDP" />
-                  <FormControlLabel value="Labor Force" control={<Radio color="primary"/>} label="Labor Force" />
-                  <FormControlLabel value="Unemployment Rate" control={<Radio color="primary"/>} label="Unemployment" />
-                  <FormControlLabel value="Median Income Essential Workers" control={<Radio color="primary"/>} label="Median Income" />
-                  <FormControlLabel value="Frontline Industry Rate" control={<Radio color="primary"/>} label="Frontline Rate" />
-                </RadioGroup>
-              </FormControl>
-            </CardActions>
-          </Card>
+          <Hidden only={['xs', 'sm', 'md']}>
+            <div id="legend-area-container">
+              <div id="legend-area">
+                <Typography style={{marginBottom : "10%" }}>Legend</Typography>
+                {
+                  dataLayer.paint['fill-color'].stops
+                    .map(stop => 
+                      <div key={stop[0]} className="legend"> 
+                        <div key={stop[0]} className="legend-values">{stop[0]}</div> <StopIcon className="legend-colors" style={{color : stop[1] }}/> 
+                      </div>
+                    )
+                }
+              </div>
+            </div>     
+            <Card id="filter-section">
+              <CardActions>
+                <FormControl component="fieldset">
+                  <FormLabel component="legend">Measures</FormLabel>
+                  <RadioGroup aria-label="measures" name="measures1" value={radio} onChange={updateRadio}>
+                    <FormControlLabel value="GDP (Thousands of dollars)" control={<Radio color="primary"/>} label="GDP" />
+                    <FormControlLabel value="Labor Force" control={<Radio color="primary"/>} label="Labor Force" />
+                    <FormControlLabel value="Unemployment Rate" control={<Radio color="primary"/>} label="Unemployment" />
+                    <FormControlLabel value="Median Income Essential Workers" control={<Radio color="primary"/>} label="Median Income" />
+                    <FormControlLabel value="Frontline Industry Rate" control={<Radio color="primary"/>} label="Frontline Rate" />
+                  </RadioGroup>
+                </FormControl>
+              </CardActions>
+            </Card>
+          </Hidden>
           <ReactMapGL 
             {...viewport}
             {...settings}
@@ -175,6 +188,23 @@ const Map = (props) => {
               {renderTooltip()}
           </ReactMapGL>
         </section>
+        
+        <Hidden lgUp>
+          <div id="legend-area-container-small">
+            <div id="legend-area-small">
+              <Typography>Legend</Typography>
+              {
+                dataLayer.paint['fill-color'].stops
+                  .map(stop => 
+                    <>
+                      <span key={stop[0]} className="legend-values-small">{stop[0]}</span> <StopIcon className="legend-colors-small" style={{color : stop[1] }}/> 
+                    </>
+                  )
+              }
+            </div>
+          </div>
+        </Hidden>
+      </>
     );
 };
 

@@ -1,5 +1,5 @@
 // Libraries
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 // Material UI
 import Grid from '@material-ui/core/Grid';
@@ -9,12 +9,14 @@ import Typography from '@material-ui/core/Typography';
 // Styles
 import './App.css';
 
+
 // Custom Components
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Map from './components/Map';
 import Hero from './components/Hero';
-import Table from './components/Table';
+import ScrollingTable from './components/ScrollingTable';
+import StaticControlPanel from './components/StaticControlPanel';
 import StickyControlPanel from './components/StickyControlPanel';
 
 // Data
@@ -72,30 +74,8 @@ function App() {
   };
 
   const [table, setTableView] = useState("Missouri");
-  const [dimensions, setDimensions] = useState({ 
-    height: window.innerHeight * 0.60,
-    width: window.innerWidth * 0.60
-  });
 
 
-  useEffect(() => {
-
-    function handleResize() {
-
-      setDimensions({
-        height: window.innerHeight * 0.60,
-        width: window.innerWidth * 0.60
-      });
-  
-      window.addEventListener('resize', handleResize);
-      return window.removeEventListener('resize', handleResize);
-    };
-
-  });
-
-
-
-  
   return (
     <Grid container>
       <Navbar/>
@@ -105,13 +85,16 @@ function App() {
       </Grid>
 
       <Grid container component="main">
-        <Hidden mdDown>
+        <Hidden only={['xs', 'sm', 'md']}>
           <Grid item lg={3} xl={3}>
             <StickyControlPanel tableNames={Object.keys(tableData)} currentView={table} setTableView={setTableView}/>
           </Grid>
         </Hidden>
         
         <Grid item component="section" sm={12} md={12} lg={9} xl={9}>
+          <Hidden lgUp>
+              <StaticControlPanel tableNames={Object.keys(tableData)} currentView={table} setTableView={setTableView}/>
+          </Hidden>
 
           <Typography variant="body1" id="map-summary">
             {map_summary[table]}
@@ -123,16 +106,37 @@ function App() {
             {table_summary[table]}
           </Typography>
 
-          {/* <Table rows={tableData[table].rows}/> */}
-
+          
+          <ScrollingTable rows={
+            {columns: 
+              [
+                {label: "", field: "index", sort: "asc", width: 200},
+                {label: "All Frontline Industries", field: "All Frontline Industries", sort: "asc", width: 200},
+                {label: "All Workers", field: "All Workers", sort: "asc", width: 200},
+                {label: "Building Cleaning Services", field: "Building Cleaning Services", sort: "asc", width: 200},
+                {label: "Childcare & Social Services", field: "Childcare & Social Services", sort: "asc", width: 200},
+                {label: "Grocery, Convenience, & Drug Stores", field: "Grocery, Convenience, & Drug Stores", sort: "asc", width: 200},
+                {label: "Health Care", field: "Health Care", sort: "asc", width: 200},
+                {label: "Public Transit", field: "Public Transit", sort: "asc", width: 200},
+                {label: "Trucking, Warehouse, & Postal Service", field: "Trucking, Warehouse, & Postal Service", sort: "asc", width: 200},
+              ]
+            , rows:
+            [
+              ...tableData[table].rows[0].rows,
+              ...tableData[table].rows[1].rows,
+              ...tableData[table].rows[2].rows,
+              ...tableData[table].rows[3].rows,
+              ...tableData[table].rows[4].rows,
+              ...tableData[table].rows[5].rows,
+              ...tableData[table].rows[6].rows
+            ]}
+            }/>
         </Grid>
 
         <Grid item component="section" sm={12} md={12} lg={12} xl={12}>
           <Footer />
         </Grid>
-        
       </Grid>
-
     </Grid>
   );
 }
