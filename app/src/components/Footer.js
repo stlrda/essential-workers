@@ -12,17 +12,13 @@ const Footer = (props) => {
     <Grid component="footer" container justify="center" spacing={0}>
         <Grid component="p" item sm={12} md={5} lg={5}>
 
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Dolor sed viverra ipsum nunc aliquet bibendum enim. 
-            Gravida arcu ac tortor dignissim convallis aenean et. 
-            Malesuada fames ac turpis egestas integer eget aliquet nibh praesent.
-            Netus et malesuada fames ac turpis egestas integer. Neque egestas congue quisque egestas. 
-            In metus vulputate eu scelerisque felis imperdiet proin.
-            Sit amet aliquam id diam. Diam volutpat commodo sed egestas. At lectus urna duis convallis.
-            Ut tellus elementum sagittis vitae et leo. Libero justo laoreet sit amet cursus sit amet dictum sit.
-            Ultricies tristique nulla aliquet enim. Ipsum consequat nisl vel pretium lectus quam id.
-            Ante metus dictum at tempor commodo ullamcorper.
-
+        The Essential Workers project was developed by 
+        the <a target="_blank" rel="noopener noreferrer" href="http://stldata.org">St. Louis Regional Data Alliance </a>
+        in partnership with <a target="_blank" rel="noopener noreferrer" href="http://daugherty.com">Daugherty Business Solutions</a>.  
+        The data used in this project was collected from the Census Bureau's American Community Survey (2018)
+        and the Bureau of Economic Analysis. Each dataset featured on this webpage can be downloaded via the upper right-hand corner of the
+        webpage.
+        
         </Grid>
 
         <Grid item sm={6} md={3} lg={3}>
