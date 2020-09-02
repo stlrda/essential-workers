@@ -10,18 +10,18 @@ const ScrollingTable = (props) => {
   const { rows } = props;
 
   return (
-    <section id="thing">
+    <section id="scrolling-table-section">
       <MDBDataTable
-        id="thing2"
-        autoWidth={true}
+        id="scrolling-table"
+        sorting={false}
         paging={false}
         searching={false}
+        sortable={false}
         data={rows}
         hover
         small
         striped
         responsive
-        bordered
       />
     </section>
 

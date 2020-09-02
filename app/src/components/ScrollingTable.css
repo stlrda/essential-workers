@@ -1,12 +1,33 @@
-#thing {
+#scrolling-table-section {
     margin-top: 5%;
     margin-bottom: 0%;
     margin-left: auto;
     margin-right: auto;
     width: 90%;
-  
 }
 
 .table-responsive {
     max-width: calc(100vw);
+}
+
+th {
+    font-family: footer;
+}
+
+#scrolling-table > tbody > tr:nth-child(1) {
+    background-color:#727272;
+    color: whitesmoke;
+    font-weight: bolder;
+}
+
+
+#scrolling-table > tbody > tr:nth-child(7),
+#scrolling-table > tbody > tr:nth-child(10),
+#scrolling-table > tbody > tr:nth-child(16),
+#scrolling-table > tbody > tr:nth-child(22),
+#scrolling-table > tbody > tr:nth-child(26) {
+    font-family: footer;
+    background-color:#1B365D;
+    color: whitesmoke;
+    font-weight: bolder;
 }
