@@ -98,7 +98,7 @@ function App() {
           <Typography variant="body1" id="map-summary">
             Prior to COVID-19's onbringing of a global pandemic, essential workers across economies have been
             underpaid and under appreciated. During the pandemic, they are shouldering the burden of providing
-            necessary products and services all while being at especially high risk for exposure the the virus.
+            necessary products and services all while being at especially high risk for exposure to the virus.
             The visualizations below intend to illustrate the demographics and profile of essential workers across
             Missouri, Illinois, and Saint Louis.
             <br/>
