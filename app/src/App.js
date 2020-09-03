@@ -111,7 +111,7 @@ function App() {
           <Map table={table} />
 
           <Typography variant="body1" id="table-summary">
-            The data table below details characteristics of essential workers by overall quanitity and percentage, broken up into
+            The data table below details characteristics of essential workers by overall quantity and percentage, broken up into
             six generalized industries. You are currently viewing data for {table}.
           </Typography>
 
