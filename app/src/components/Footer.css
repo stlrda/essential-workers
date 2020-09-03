@@ -2,8 +2,6 @@ footer {
     padding-top: 3%;
     padding-bottom: 3%;
 }
-  
-
 
 footer img {
     width: 50%;
@@ -12,22 +10,23 @@ footer img {
     margin: 0%;
 }
 
-
 footer p {
-    font-size: 1.5vw;
+    font-size: 1.2vw;
     font-family: footer;
+}
+
+footer a:link {
+    font-weight: bold;
 }
 
 
 @media screen and (max-width: 1024px) {
-
     footer p {
         padding: 6%;
+        font-size: 2vw;
     }
 
-    footer img {
-        /* padding: 15%; */
-    }
+
 }
 
 
@@ -35,6 +34,5 @@ footer p {
     footer p {
         font-size: 3.5vw;
     }
-  
-  }
+}
   

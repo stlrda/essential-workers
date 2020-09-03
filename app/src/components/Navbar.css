@@ -10,21 +10,6 @@
   color: #1B365D !important;
 }
 
-a:link {
-  text-decoration: underline;
-  color: rgb(0, 128, 119);
-}
-
-a:visited {
-  text-decoration: underline;
-  color: rgb(0, 30, 71);
-
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
 
 @media screen and (max-width: 768px) {
   #logo {

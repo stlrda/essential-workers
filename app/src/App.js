@@ -9,15 +9,14 @@ import Typography from '@material-ui/core/Typography';
 // Styles
 import './App.css';
 
-
 // Custom Components
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import Map from './components/Map';
 import Hero from './components/Hero';
-import ScrollingTable from './components/ScrollingTable';
 import StaticControlPanel from './components/StaticControlPanel';
 import StickyControlPanel from './components/StickyControlPanel';
+import Map from './components/Map';
+import ScrollingTable from './components/ScrollingTable';
+import Footer from './components/Footer';
 
 // Data
 const {map_summary, table_summary} = require('./data/Constants')
@@ -97,20 +96,30 @@ function App() {
           </Hidden>
 
           <Typography variant="body1" id="map-summary">
-            {map_summary[table]}
+            Prior to COVID-19's onbringing of a global pandemic, essential workers across economies have been
+            underpaid and under appreciated. During the pandemic, they are shouldering the burden of providing
+            necessary products and services all while being at especially high risk for exposure the the virus.
+            The visualizations below intend to illustrate the demographics and profile of essential workers across
+            Missouri, Illinois, and Saint Louis.
+            <br/>
+            <br/>
+            The interactive map below features county level data on essential workers across five measures. 
+            You are currently viewing data for {table}.
+            In {table}, {map_summary[table]}
           </Typography>
           
           <Map table={table} />
 
           <Typography variant="body1" id="table-summary">
-            {table_summary[table]}
+            The data table below details characteristics of essential workers by overall quantity and percentage, broken up into
+            six generalized industries. You are currently viewing data for {table}.
           </Typography>
 
           
           <ScrollingTable rows={
             {columns: 
               [
-                {label: "", field: "index", ordering: "false", width: 200},
+                {label: "", field: "index", width: 200},
                 {label: "All Frontline Industries", field: "All Frontline Industries", width: 200},
                 {label: "All Workers", field: "All Workers", width: 200},
                 {label: "Building Cleaning Services", field: "Building Cleaning Services", width: 200},

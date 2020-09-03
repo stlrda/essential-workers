@@ -112,7 +112,7 @@ const Map = (props) => {
   
       return (
         feature && (
-          <div className="tooltip" style={{left: x, top: y}}>
+          <div className="tooltipz" style={{left: x, top: y}}>
             <div>County: {feature.properties.NAME}</div>
             <div>GDP: {feature.properties["GDP (Thousands of dollars)"]}</div>
             <div>Labor Force: {feature.properties["Labor Force"]}</div>
