@@ -7,7 +7,7 @@ import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 
 const ScrollingTable = (props) => {
-  const { rows } = props;
+  const { tableData } = props;
 
   return (
     <section id="scrolling-table-section">
@@ -17,7 +17,7 @@ const ScrollingTable = (props) => {
         paging={false}
         searching={false}
         sortable={false}
-        data={rows}
+        data={tableData}
         hover
         small
         striped
