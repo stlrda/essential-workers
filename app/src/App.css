@@ -41,84 +41,89 @@ footer {
   margin-bottom: 0%;
 }
 
-p#map-summary, p#table-summary {
+p#intro, p#segway, p#map-summary, p#table-summary {
+  font-family: footer;
+  font-size: 2vw;
   text-align: justify;
   text-justify: inter-word;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+
+}
+
+p#intro {
+  padding-top: 0%;
+  margin-top: -25%;
 }
 
 p#map-summary {
+  margin-top: 3%;
+}
+
+p#segway {
+  margin-top: 0px;
+  padding-top: 1em;
+}
+
+p#groupings {
+  font-family: footer;
+  font-size: 1.5vw;
+  margin-top: 1.5%;
   margin-left: auto;
   margin-right: auto;
-  font-size: 2vw;
-  font-family: footer;
-  padding-top: 0%;
-  margin-top: -25%;
   width: 90%;
 }
 
 p#table-summary {
-  font-size: 2vw;
-  font-family: footer;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0px;
-  padding-top: 1em;
-  width: 90%;
+  margin-top: 3%;
 }
 
 
 
 @media screen and (max-width: 1920px) {
-  p#map-summary {
+  p#intro, p#segway, p#map-summary, p#table-summary  {
     font-size: 1.7vw;
   }
   
-  p#table-summary {
-    font-size: 1.7vw;
+  p#groupings {
+    font-size: 1.2vw;
   }
 
 }
 
 @media screen and (max-width: 1680px) {
 
-  p#map-summary {
+  p#intro, p#segway, p#map-summary, p#table-summary  {
     font-size: 2vw;
   }
   
-  p#table-summary {
-    font-size: 2vw;
-  }
-
-}
-
-@media screen and (max-width: 1280px) {
-
-  #ctable {
-
+  p#groupings {
+    font-size: 1.3vw;
   }
 
 }
 
 
 @media screen and (max-width: 768px) {
-  p#map-summary {
+  p#intro, p#segway, p#map-summary, p#table-summary  {
     font-size: 3vw;
   }
   
-  p#table-summary {
-    font-size: 3vw;
+  p#groupings {
+    font-size: 1.9vw;
   }
 
 }
 
 
 @media screen and (max-width: 640px) {
-  p#map-summary {
+  p#intro, p#segway, p#map-summary, p#table-summary  {
     font-size: 5vw;
   }
   
-  p#table-summary {
-    font-size: 5vw;
+  p#groupings {
+    font-size: 3vw;
   }
 
 }
