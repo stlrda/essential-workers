@@ -14,7 +14,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import StaticControlPanel from './components/StaticControlPanel';
 import StickyControlPanel from './components/StickyControlPanel';
-import Map from './components/Map';
+import NativeMap from './components/NativeMap';
 import ScrollingTable from './components/ScrollingTable';
 import Footer from './components/Footer';
 
@@ -31,48 +31,28 @@ const stl_json = require('./data/stl.json');
 // lg, large: 1280px
 // xl, extra-large: 1920px
 
-const createRows = (data) => 
-  [
-    {
-      title: "Totals",
-      rows: [data[0]]
-    },
-    {
-      title: "Miscellaneous", 
-      rows: [data[1], data[2], data[3], data[4], data[5]]
-    },
-    {
-      title: "Full/Part-time", 
-      rows: [data[6], data[7]]
-    },
-    {
-      title: "Race/Ethnicity", 
-      rows: [data[8], data[9], data[10], data[11], data[12],]
-    },
-    {
-      title: "Education Level", 
-      rows: [data[13], data[14], data[15], data[16], data[17],]
-    },
-    {
-      title: "Compensation and Benefits", 
-      rows: [data[18], data[19], data[20]]
-    },
-    {
-      title: "Family Responsibilities", 
-      rows: [data[21], data[22]]
-    },
-  ];
+const createRowsByCategory = (data) => (
+  {
+    "Totals" : [data[0]],
+    "Miscellaneous" : [data[1], data[2], data[3], data[4], data[5]],
+    "Full/Part-time" : [data[6], data[7]],
+    "Race/Ethnicity" : [data[8], data[9], data[10], data[11], data[12]],
+    "Education Level" : [data[13], data[14], data[15], data[16], data[17]],
+    "Compensation and Benefits" : [data[18], data[19], data[20]],
+    "Family Responsibilities" : [data[21], data[22]]
+  }
+);
 
 
 function App() {
 
-  const tableData = {
-    Missouri : { rows: createRows(missouri_json) },
-    Illinois : { rows: createRows(illinois_json) },
-    "Saint Louis" : { rows: createRows(stl_json) },
+  const tables = {
+    Missouri : { rowsByCategory: createRowsByCategory(missouri_json) },
+    Illinois : { rowsByCategory: createRowsByCategory(illinois_json) },
+    "Saint Louis" : { rowsByCategory: createRowsByCategory(stl_json) },
   };
 
-  const [table, setTableView] = useState("Missouri");
+  const [selectedTableName, setSelectedTableName] = useState("Missouri");
 
 
   return (
@@ -86,37 +66,88 @@ function App() {
       <Grid container component="main">
         <Hidden only={['xs', 'sm', 'md']}>
           <Grid item lg={3} xl={3}>
-            <StickyControlPanel tableNames={Object.keys(tableData)} currentView={table} setTableView={setTableView}/>
+            <StickyControlPanel tableNames={Object.keys(tables)} currentView={selectedTableName} setTableView={setSelectedTableName}/>
           </Grid>
         </Hidden>
         
         <Grid item component="section" sm={12} md={12} lg={9} xl={9}>
           <Hidden lgUp>
-              <StaticControlPanel tableNames={Object.keys(tableData)} currentView={table} setTableView={setTableView}/>
+              <StaticControlPanel tableNames={Object.keys(tables)} currentView={selectedTableName} setTableView={setSelectedTableName}/>
           </Hidden>
 
+          <Typography variant="body1" id="intro">
+            Essential workers are shouldering the responsibility of providing fundamental products and services 
+            during the COVID-19 pandemic all while being at especially high risk for exposure to the virus.
+            This webpage is dedicated to helping others garner insight into the economic climate surrounding
+            more than 2,000,000 essential workers across Missouri and Illinois.
+          </Typography>
+
           <Typography variant="body1" id="map-summary">
-            Prior to COVID-19's onbringing of a global pandemic, essential workers across economies have been
-            underpaid and under appreciated. During the pandemic, they are shouldering the burden of providing
-            necessary products and services all while being at especially high risk for exposure to the virus.
-            The visualizations below intend to illustrate the demographics and profile of essential workers across
-            Missouri, Illinois, and Saint Louis.
-            <br/>
-            <br/>
             The interactive map below features county level data on essential workers across five measures. 
-            You are currently viewing data for {table}.
-            In {table}, {map_summary[table]}
+            You are currently viewing data for {selectedTableName}.
+            In {selectedTableName}, {map_summary[selectedTableName]}
           </Typography>
           
-          <Map table={table} />
+          
+          <NativeMap selectedTableName={selectedTableName} />
+ 
+          
+          <Typography variant="body1" id="segway">
+            The data table below details characteristics of essential workers by overall quantity and percentage, generalized into
+            six groups. In generalizing frontline / essential industries, we took inspiration from the
+            <a href="https://cepr.net/a-basic-demographic-profile-of-workers-in-frontline-industries/"> Center for Economic and Policy Research</a>.
+            Essential industry groups feature various, more specific industries, each classified by the Census Bureau’s Industry Codes:
+          </Typography>
+
+          <Typography variant="body1" id="groupings">
+            <ul>
+                <li>
+                  Grocery, Convenience, and Drug Stores: Grocery and related product merchant wholesalers (4470)
+                  , Supermarkets and other grocery stores (4971)
+                  , Convenience Stores (4972)
+                  , Pharmacies and drug stores (5070)
+                  , and General merchandise stores
+                  , including warehouse clubs and supercenters (5391)
+                </li>
+                <li>
+                  Public Transit: Rail transportation (6080) and Bus service and urban transit (6180).
+                </li>
+                <li>
+                  Trucking, Warehouse
+                  , and Postal Service: Truck transportation (6170)
+                  , Warehousing and storage (6390)
+                  , and Postal Service (6370).
+                </li>
+                <li>
+                  Building Cleaning Services: Cleaning Services to Buildings and Dwellings (7690).
+                </li>
+                <li>
+                  Health Care: Offices of physicians (7970)
+                  , Outpatient care centers (8090)
+                  , Home health care services (8170)
+                  , Other health care services (8180)
+                  , General medical and surgical hospitals
+                  , and specialty hospitals (8191)
+                  , Psychiatric and substance abuse hospitals (8192)
+                  , Nursing care facilities (skilled nursing facilities) (8270)
+                  , and Residential care facilities
+                  , except skilled nursing facilities (8290).
+                </li>
+                <li>
+                  Child Care and Social Services: Individual and family services (8370)
+                  , Community food and housing
+                  , and emergency services (8380)
+                  , and Child day care services (8470).
+                </li>
+              </ul>
+          </Typography>
 
           <Typography variant="body1" id="table-summary">
-            The data table below details characteristics of essential workers by overall quantity and percentage, broken up into
-            six generalized industries. You are currently viewing data for {table}.
+            You are currently viewing data for {selectedTableName}.
           </Typography>
 
           
-          <ScrollingTable rows={
+          <ScrollingTable tableData={
             {columns: 
               [
                 {label: "", field: "index", width: 200},
@@ -131,20 +162,20 @@ function App() {
               ]
             , rows:
             [
-              ...tableData[table].rows[0].rows,
-              ...tableData[table].rows[1].rows,
+              ...tables[selectedTableName].rowsByCategory["Totals"],
+              ...tables[selectedTableName].rowsByCategory["Miscellaneous"],
               {"Childcare & Social Services": "Full Time"},
-              ...tableData[table].rows[2].rows,
+              ...tables[selectedTableName].rowsByCategory["Full/Part-time"],
               {"Childcare & Social Services": "Race/Ethnicity"},
-              ...tableData[table].rows[3].rows,
+              ...tables[selectedTableName].rowsByCategory["Race/Ethnicity"],
               {"Childcare & Social Services": "Education Level"},
-              ...tableData[table].rows[4].rows,
+              ...tables[selectedTableName].rowsByCategory["Education Level"],
               {"Childcare & Social Services": "Compensation and Benefits"},
-              ...tableData[table].rows[5].rows,
+              ...tables[selectedTableName].rowsByCategory["Compensation and Benefits"],
               {"Childcare & Social Services": "Family Responsibilities"},
-              ...tableData[table].rows[6].rows
+              ...tables[selectedTableName].rowsByCategory["Family Responsibilities"]
             ]}
-            }/>
+          }/>
         </Grid>
 
         <Grid item component="section" sm={12} md={12} lg={12} xl={12}>
