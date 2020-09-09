@@ -13,7 +13,6 @@ const ScrollingTable = (props) => {
     <section id="scrolling-table-section">
       <MDBDataTable
         id="scrolling-table"
-        sorting={false}
         paging={false}
         searching={false}
         sortable={false}

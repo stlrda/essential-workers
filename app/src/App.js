@@ -14,8 +14,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import StaticControlPanel from './components/StaticControlPanel';
 import StickyControlPanel from './components/StickyControlPanel';
-import Map from './components/Map';
-// import NativeMap from './components/NativeMap';
+import NativeMap from './components/NativeMap';
 import ScrollingTable from './components/ScrollingTable';
 import Footer from './components/Footer';
 
@@ -90,7 +89,7 @@ function App() {
           </Typography>
           
           
-          <Map table={selectedTableName} />
+          <NativeMap selectedTableName={selectedTableName} />
  
           
           <Typography variant="body1" id="segway">
