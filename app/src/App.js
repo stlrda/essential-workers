@@ -12,10 +12,10 @@ import './App.css';
 // Custom Components
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import StaticControlPanel from './components/StaticControlPanel';
-import StickyControlPanel from './components/StickyControlPanel';
-import NativeMap from './components/NativeMap';
-import ScrollingTable from './components/ScrollingTable';
+import StaticControlPanel from './components/Controls/StaticControlPanel';
+import StickyControlPanel from './components/Controls/StickyControlPanel';
+import Map from './components/Map/Map';
+import ScrollingTable from './components/Table/ScrollingTable';
 import Footer from './components/Footer';
 
 // Data
@@ -89,7 +89,7 @@ function App() {
           </Typography>
           
           
-          <NativeMap selectedTableName={selectedTableName} />
+          <Map selectedTableName={selectedTableName} />
  
           
           <Typography variant="body1" id="segway">
