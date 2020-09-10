@@ -171,7 +171,11 @@ const Map = (props) => {
       container: mapContainerRef.current,
       style: 'mapbox://styles/mapbox/light-v10',
       center: [lng, lat],
-      zoom: zoom
+      zoom: zoom,
+      minZoom: 5,
+      minPitch: 0,
+      maxPitch: 0,
+      doubleClickZoom: false
     });
 
     map.on('move', () => {
@@ -181,20 +185,21 @@ const Map = (props) => {
     });
 
     // change cursor to pointer when user hovers over a clickable feature
-    map.on('mouseenter', e => {
+    map.on('mouseenter', 'root-layer', e => {
       if (e.features.length) {
         map.getCanvas().style.cursor = 'pointer';
       }
     });
 
     // reset cursor to default when user is no longer hovering over a clickable feature
-    map.on('mouseleave', () => {
+    map.on('mouseleave', 'root-layer', () => {
       map.getCanvas().style.cursor = '';
     });
 
     // add tooltip when users mouse move over a point
-    map.on('mousemove', e => {
+    map.on('click', 'root-layer', e => {
       const features = map.queryRenderedFeatures(e.point);
+
       if (features.length) {
         const feature = features[0];
 

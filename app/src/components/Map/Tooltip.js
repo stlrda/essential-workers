@@ -2,10 +2,13 @@ import React from "react";
 import './Tooltip.css';
 
 const Tooltip = ({ feature }) => {
-  const { id } = feature.properties;
+  const { layer } = feature;
+  console.log(layer.id);
+
+  const hidden = layer.id === "root-layer" ? false : true;
 
   return (
-    <div className="tooltipz">
+    <div className="tooltipz" hidden={hidden}>
         <div>County: {feature.properties.NAME}</div>
         <div>GDP: {feature.properties["GDP (Thousands of dollars)"]}</div>
         <div>Labor Force: {feature.properties["Labor Force"]}</div>
