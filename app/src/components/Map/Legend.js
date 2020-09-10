@@ -9,17 +9,19 @@ import './Legend.css';
 
 
 export const LegendLarge = (props) => {
-  const { dataLayer } = props;
+  const { legendObj } = props;
+  const { stops, description, stopLabels, palette} = legendObj;
 
   return (
     <div id="legend-area-container-large">
       <div id="legend-area-large">
-        <Typography style={{marginBottom : "10%" }}>Legend</Typography>
+        <h6 className="legend-title" style={{marginBottom : "1%" }}>Legend</h6>
+        <h6 className="legend-descriptionz" style={{marginBottom : "2%" }}>{description}</h6>
         {
-          dataLayer.paint['fill-color'].stops
-            .map(stop => 
-              <div key={stop[0]} className="legend"> 
-                <div key={stop[0]} className="legend-values">{stop[0]}</div> <StopIcon className="legend-colors" style={{color : stop[1] }}/> 
+          stops
+            .map((stop, index) => 
+              <div key={stopLabels[index]} className="legend"> 
+                <div key={stopLabels[index]} className="legend-values">{stopLabels[index]}</div> <StopIcon className="legend-colors" style={{color : palette[index] }}/> 
               </div>
             )
         }
@@ -30,17 +32,19 @@ export const LegendLarge = (props) => {
 
 
 export const LegendSmall = (props) => {
-  const { dataLayer } = props;
+  const { legendObj } = props;
+  const { stops, description, stopLabels, palette} = legendObj;
 
   return (
     <div id="legend-area-container-small">
       <div id="legend-area-small">
-        <Typography>Legend</Typography>
+        <Typography className="legend-title">Legend</Typography>
+        <Typography className="legend-description">{description}</Typography>
         {
-          dataLayer.paint['fill-color'].stops
-            .map(stop => 
+          stops
+            .map((stop, index) => 
               <>
-                <span key={stop[0]} className="legend-values">{stop[0]}</span> <StopIcon className="legend-colors" style={{color : stop[1] }}/> 
+                <span key={stopLabels[index]} className="legend-values">{stopLabels[index]}</span> <StopIcon className="legend-colors" style={{color : palette[index] }}/> 
               </>
             )
         }

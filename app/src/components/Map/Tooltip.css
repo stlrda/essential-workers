@@ -1,5 +1,5 @@
 /* Named with a "z" at the end as to not be overriden by mdbreact library. */
-.tooltipz {
+/* .tooltipz {
     position: absolute;
     margin: 8px;
     padding: 4px;
@@ -10,4 +10,4 @@
     z-index: 9;
     pointer-events: none;
     font-family: footer;
-  }
+  } */

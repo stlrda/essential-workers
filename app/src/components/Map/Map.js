@@ -4,7 +4,6 @@ import mapboxgl from 'mapbox-gl';
 
 // Material UI
 import Hidden from '@material-ui/core/Hidden';
-import Typography from '@material-ui/core/Typography';
 
 // Custom Styles
 import './Map.css';
@@ -29,7 +28,6 @@ const data = {
   "Missouri" : mo_counties
 };
 
-
 const palette = [
   '#ffffd9',
   '#edf8b1',
@@ -42,19 +40,88 @@ const palette = [
   '#081d58'
 ];
 
-const stops = {
-  "GDP (Thousands of dollars)" : [65222,2417968,7349716,16857130,32631130,47496821,67701128,91380287,411671713]
-    .map((stop, index) => [stop, palette[index]]),
-  "Labor Force": [964,14881,44273,101894,171051,281764,381084,524849,2765106]
-    .map((stop, index) => [stop, palette[index]]),
-  "Unemployment Rate": [2.27,3.61,4.62,5.41,6.17,7.21,8.57,10.08,15.91]
-    .map((stop, index) => [stop, palette[index]]),
-  "Median Income Essential Workers": [23689,27750,30409,32875,35341,38019,40993,44732,50396]
-    .map((stop, index) => [stop, palette[index]]),
-    "Frontline Industry Rate": [2.47,11.89,16.55,20.93,25.88,32.72,41.34,49.47,73.92]
-    .map((stop, index) => [stop, palette[index]]),
+const legendData = {
+  "GDP (Thousands of dollars)" : {
+    stops : [64_000, 2_400_000, 7_000_000, 16_000_000, 32_000_000, 47_000_000, 67_000_000, 91_000_000, 411_000_000]
+              .map((stop, index) => [stop, palette[index]]),
+    stopLabels : ["Less Than $2,400,000",
+                  "Between $2,400,000 and $7,000,000",
+                  "Between $7,000,000 and $16,000,000",
+                  "Between $16,000,000 and $32,000,000",
+                  "Between $32,000,000 and $47,000,000",
+                  "Between $47,000,000 and $67,000,000",
+                  "Between $67,000,000 and $91,000,000",
+                  "Between $67,000,000 and $411,000,000",
+                  "More than $411,000,000",
+                 ],
+    palette,
+    description: "Gross Domestic Product in US Dollars (2018)"
+  },
+  "Labor Force" : {
+    stops : [940, 14_000, 44_000, 100_000, 170_000, 280_000, 380_000, 500_000, 2_000_000]
+              .map((stop, index) => [stop, palette[index]]),
+    stopLabels : ["Less Than 14,000",
+                  "Between 14,000 and 44,000",
+                  "Between 44,000 and 100,000",
+                  "Between 100,000 and 170,000",
+                  "Between 170,000 and 280,000",
+                  "Between 280,000 and 380,000",
+                  "Between 380,000 and 500,000",
+                  "Between 500,000 and 2,000,000",
+                  "More than 2,000,000 people",
+                ],
+    palette,
+    description : "Sum of individuals in Labor Force (2018)"
+  },
+  "Unemployment Rate" : {
+    stops : [2, 3, 4, 5, 6, 7, 8, 10, 15]
+              .map((stop, index) => [stop, palette[index]]),
+    stopLabels : ["Less Than 3%",
+                  "Between 3% and 4%",
+                  "Between 4% and 5%",
+                  "Between 5% and 6%",
+                  "Between 6% and 7%",
+                  "Between 7% and 8%",
+                  "Between 8% and 10%",
+                  "Between 10% and 15%",
+                  "More than 15%",
+                ],
+    palette,
+    description : "Percentage of individuals that are unemployed (2018)"
+  },
+  "Median Income Essential Workers" : {
+    stops : [20_000, 25_000, 30_000, 32_000, 35_000, 38_000, 40_000, 44_000, 50_000]
+              .map((stop, index) => [stop, palette[index]]),
+    stopLabels : ["Less Than $25,000",
+                  "Between $25,000 and $30,000",
+                  "Between $30,000 and $32,000",
+                  "Between $32,000 and $35,000",
+                  "Between $35,000 and $38,000",
+                  "Between $38,000 and $40,000",
+                  "Between $40,000 and $44,000",
+                  "Between $44,000 and $50,000",
+                  "More than $50,000",
+                ],
+    palette,
+    description: "Median Income in US Dollars (2018)"
+  },
+  "Frontline Industry Rate" : {
+    stops : [2, 10, 15, 20, 25, 30, 40, 45, 70]
+              .map((stop, index) => [stop, palette[index]]),
+    stopLabels : ["Less Than 10%",
+                  "Between 10% and 15%",
+                  "Between 15% and 20%",
+                  "Between 20% and 25%",
+                  "Between 25% and $30%",
+                  "Between 30% and 40%",
+                  "Between 40% and 45%",
+                  "Between 45% and 70%",
+                  "More than 70%",
+                ],
+    palette,
+    description : "Percentage of essential workers in Labor Force (2018)"
+  }
 };
-
 
 const mapViews = {
   Missouri : { center: [-91.8318, 37.9643], zoom: 5 },
@@ -87,9 +154,9 @@ const Map = (props) => {
     paint: {
       'fill-color': {
         property: radio,
-        stops: stops[radio]
+        stops: legendData[radio].stops
       },
-      'fill-opacity': 0.7
+      'fill-opacity': 0.8
     }
   };
 
@@ -178,7 +245,7 @@ const Map = (props) => {
       mapRef.setPaintProperty(
         "root-layer",
         "fill-color", 
-        { property: radio, stops: stops[radio]}
+        { property: radio, stops: legendData[radio].stops}
       );
     }
   }, [radio]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -197,7 +264,7 @@ const Map = (props) => {
           <FilterLarge radio={radio} updateRadio={updateRadio}/>
 
           {/* Legend (atop map) */}
-          <LegendLarge dataLayer={dataLayer} />
+          <LegendLarge legendObj={legendData[radio]} />
         </Hidden>
 
         {/* Map */}
@@ -206,7 +273,7 @@ const Map = (props) => {
 
       {/* Legend (below map) */}
       <Hidden lgUp>
-        <LegendSmall dataLayer={dataLayer} />
+        <LegendSmall legendObj={legendData[radio]} />
       </Hidden>
     </>
   );
