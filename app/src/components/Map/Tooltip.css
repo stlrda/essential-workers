@@ -11,3 +11,7 @@
     pointer-events: none;
     font-family: footer;
   } */
+
+.mapboxgl-popup-close-button {
+  visibility: hidden;
+}
