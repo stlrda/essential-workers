@@ -12,9 +12,9 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 
 
-const missouri_img = require('../images/river.jpg');
-const illinois_img = require('../images/bean.jpg');
-const stl_img = require('../images/arch.jpg');
+const missouri_img = require('../../images/river.jpg');
+const illinois_img = require('../../images/bean.jpg');
+const stl_img = require('../../images/arch.jpg');
 
 const images = {
   Missouri :  {img: missouri_img, title: "Missouri river"},

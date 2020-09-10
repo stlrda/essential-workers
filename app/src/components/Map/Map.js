@@ -1,20 +1,23 @@
 import React, { useRef, useEffect, useLayoutEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 import mapboxgl from 'mapbox-gl';
 
 // Material UI
-import StopIcon from '@material-ui/icons/Stop';
 import Hidden from '@material-ui/core/Hidden';
-import {Card, CardActions, Typography} from '@material-ui/core';
-import {Radio, RadioGroup, FormControlLabel, FormControl, FormLabel} from '@material-ui/core';
-
+import Typography from '@material-ui/core/Typography';
 
 // Custom Styles
-import './NativeMap.css';
+import './Map.css';
+
+// Custom Components
+import {FilterLarge, FilterSmall} from './Filter';
+import {LegendLarge, LegendSmall} from './Legend';
+import Tooltip from './Tooltip';
 
 // Data
-import stl_counties from '../data/geojson/MSA_Stats.geojson';
-import mo_counties from '../data/geojson/MO_Stats.geojson';
-import il_counties from '../data/geojson/IL_Stats.geojson';
+import stl_counties from '../../data/geojson/MSA_Stats.geojson';
+import mo_counties from '../../data/geojson/MO_Stats.geojson';
+import il_counties from '../../data/geojson/IL_Stats.geojson';
 
 // Token
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
@@ -66,15 +69,16 @@ const Map = (props) => {
 
   const firstUpdate = useRef(true);
   const secondUpdate = useRef(true);
+
   const mapContainerRef = useRef(null);
+  const [mapRef, setMapRef] = useState(null);
+  const tooltipRef = useRef(new mapboxgl.Popup({ offset: 15 }));
+  const [radio, setRadio] = useState('GDP (Thousands of dollars)');
   
   const [lng, setLng] = useState(mapViews[selectedTableName].center[0]);
   const [lat, setLat] = useState(mapViews[selectedTableName].center[1]);
   const [zoom, setZoom] = useState(mapViews[selectedTableName].zoom);
-  const [hoveredFeature, setHoveredFeature] = useState({ feature: null });
-  const [mapRef, setMapRef] = useState(null);
 
-  const [radio, setRadio] = useState('GDP (Thousands of dollars)');
 
   const dataLayer = {
     id: "root-layer",
@@ -93,33 +97,6 @@ const Map = (props) => {
     setRadio(event.target.value);
   };
 
-  const onHover = event => {
-    console.log(event);
-    const {
-      features,
-      srcEvent: {offsetX, offsetY}
-    } = event;
-    const feature = features && features.find(f => f.layer.id === 'data');
-    setHoveredFeature({feature, x: offsetX, y: offsetY});
-  };
-
-
-  const renderTooltip = () => {
-    const {feature, x, y} = hoveredFeature;
-
-    return (
-      feature && (
-        <div className="tooltipz" style={{left: x, top: y}}>
-          <div>County: {feature.properties.NAME}</div>
-          <div>GDP: {feature.properties["GDP (Thousands of dollars)"]}</div>
-          <div>Labor Force: {feature.properties["Labor Force"]}</div>
-          <div>Unemployment: {feature.properties["Unemployment Rate"]}</div>
-          <div>Median Income: {feature.properties["Median Income Essential Workers"]}</div>
-          <div>Frontline Rate: {feature.properties["Frontline Industry Rate"]}</div>
-        </div>
-      )
-    );
-  };
   
   // Initialize map when component mounts
   useEffect(() => {
@@ -136,7 +113,35 @@ const Map = (props) => {
       setZoom(map.getZoom().toFixed(2));
     });
 
-    map.on('mouseover', onHover);
+    // change cursor to pointer when user hovers over a clickable feature
+    map.on('mouseenter', e => {
+      if (e.features.length) {
+        map.getCanvas().style.cursor = 'pointer';
+      }
+    });
+
+    // reset cursor to default when user is no longer hovering over a clickable feature
+    map.on('mouseleave', () => {
+      map.getCanvas().style.cursor = '';
+    });
+
+    // add tooltip when users mouse move over a point
+    map.on('mousemove', e => {
+      const features = map.queryRenderedFeatures(e.point);
+      if (features.length) {
+        const feature = features[0];
+
+        // Create tooltip node
+        const tooltipNode = document.createElement('div');
+        ReactDOM.render(<Tooltip feature={feature} />, tooltipNode);
+
+        // Set tooltip on map
+        tooltipRef.current
+          .setLngLat(e.lngLat)
+          .setDOMContent(tooltipNode)
+          .addTo(map);
+      }
+    });
 
     map.on('load', function() {
       map.addSource("source-data", {type: "geojson", data: mo_counties});
@@ -180,39 +185,30 @@ const Map = (props) => {
 
 
   return (
-    <section id="map-section">
-      <Hidden only={['xs', 'sm', 'md']}>
-        <div id="legend-area-container-large">
-          <div id="legend-area-large">
-            <Typography style={{marginBottom : "10%" }}>Legend</Typography>
-            {
-              dataLayer.paint['fill-color'].stops
-                .map(stop => 
-                  <div key={stop[0]} className="legend"> 
-                    <div key={stop[0]} className="legend-values">{stop[0]}</div> <StopIcon className="legend-colors" style={{color : stop[1] }}/> 
-                  </div>
-                )
-            }
-          </div>
-        </div>     
-        <Card id="filter-section-large">
-          <CardActions>
-            <FormControl component="fieldset">
-              <FormLabel component="legend">Measures</FormLabel>
-              <RadioGroup aria-label="measures" name="measures1" value={radio} onChange={updateRadio}>
-                <FormControlLabel value="GDP (Thousands of dollars)" control={<Radio color="primary"/>} label="GDP" />
-                <FormControlLabel value="Labor Force" control={<Radio color="primary"/>} label="Labor Force" />
-                <FormControlLabel value="Unemployment Rate" control={<Radio color="primary"/>} label="Unemployment" />
-                <FormControlLabel value="Median Income Essential Workers" control={<Radio color="primary"/>} label="Median Income" />
-                <FormControlLabel value="Frontline Industry Rate" control={<Radio color="primary"/>} label="Frontline Rate" />
-              </RadioGroup>
-            </FormControl>
-          </CardActions>
-        </Card>
+    <>
+      {/* Filter (above map) */}
+      <Hidden lgUp>
+        <FilterSmall radio={radio} updateRadio={updateRadio}/>
       </Hidden>
-      <div className='map-container' ref={mapContainerRef} />
-      {renderTooltip()}
-    </section>
+
+      <section id="map-section">
+        <Hidden only={['xs', 'sm', 'md']}>
+          {/* Filter (atop map) */}
+          <FilterLarge radio={radio} updateRadio={updateRadio}/>
+
+          {/* Legend (atop map) */}
+          <LegendLarge dataLayer={dataLayer} />
+        </Hidden>
+
+        {/* Map */}
+        <div className='map-container' ref={mapContainerRef} />
+      </section>
+
+      {/* Legend (below map) */}
+      <Hidden lgUp>
+        <LegendSmall dataLayer={dataLayer} />
+      </Hidden>
+    </>
   );
 };
 

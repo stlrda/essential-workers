@@ -1,0 +1,49 @@
+#legend-area-container-large {
+    margin-top: 0.5%;
+    margin-bottom: auto;
+    margin-left: 1%;
+    margin-right: auto;
+    width: auto;
+    height: auto;
+    position: absolute; 
+    z-index: 10;
+}
+
+#legend-area-large {
+    margin-bottom: 0.5%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    padding: 5px;
+    color: rgb(99, 98, 98);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    
+  }
+  
+#legend-area-small {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2%;
+    color: rgb(99, 98, 98);
+    text-align: center;
+    z-index: 1;
+}
+
+.legend {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.legend-values {
+    display: inline-block;
+    margin-left: 2%; 
+}
+
+.legend-colors {
+    vertical-align: middle;
+}
