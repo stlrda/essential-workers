@@ -19,7 +19,7 @@ import ScrollingTable from './components/Table/ScrollingTable';
 import Footer from './components/Footer';
 
 // Data
-const {map_summary, table_summary} = require('./data/Constants')
+const {map_summary} = require('./data/Constants')
 const missouri_json = require('./data/missouri.json');
 const illinois_json = require('./data/illinois.json');
 const stl_json = require('./data/stl.json');

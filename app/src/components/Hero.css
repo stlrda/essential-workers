@@ -12,6 +12,7 @@ html, body {
 
 div#hero-image-area {
   height: 45vh;
+  min-height: 200px;
   width: 45vw;
   background-color:#1B365D;
   opacity: 0.9;
@@ -57,8 +58,7 @@ div#hero-image-area > h3 {
   }
 }
 
-
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 420px) {
 
   html, body {
     background-position: 0% 8%;
@@ -66,6 +66,25 @@ div#hero-image-area > h3 {
 
   div#hero-image-area {
     height: 25vh;
+  }
+}
+
+@media screen and (max-width: 320px) {
+
+  html, body {
+    background-position: 0% 15%;
+  }
+}
+
+@media screen and (max-width: 280px) {
+
+  html, body {
+    background-position: 0% 8%;
+  }
+
+  div#hero-image-area {
+    min-height: 50px;
+    height: 100px;
   }
 }
 

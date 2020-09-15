@@ -51,7 +51,7 @@ const legendData = {
                   "Between $32,000,000 and $47,000,000",
                   "Between $47,000,000 and $67,000,000",
                   "Between $67,000,000 and $91,000,000",
-                  "Between $67,000,000 and $411,000,000",
+                  "Between $91,000,000 and $411,000,000",
                   "More than $411,000,000",
                  ],
     palette,

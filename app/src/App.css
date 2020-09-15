@@ -9,12 +9,13 @@
 }
 
 a:link {
-  color: rgb(0, 128, 119);
+  color: rgb(0, 163, 152);
+  
 }
 
 a:visited {
   text-decoration: underline;
-  color: rgb(0, 30, 71);
+  color: rgb(0, 146, 136);
 
 }
 
