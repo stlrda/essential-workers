@@ -9,3 +9,12 @@
     margin-top: 0%;
     margin-bottom: 25%;
 }
+
+
+@media screen and (max-width: 1260px) {
+
+    .static-controls-container {
+      margin-top: -20%;
+    }
+
+  }

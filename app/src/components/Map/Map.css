@@ -5,6 +5,7 @@
   border-color: #1B365D;
   width: 100%;
   height: 100%;
+  max-height: 1000px;
 }
 
 section#map-section {
@@ -14,6 +15,7 @@ section#map-section {
   margin-top: 4%;
   width: 90%;
   height: 66vh;
+  max-height: 1000px;
 }
 
 

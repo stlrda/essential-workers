@@ -7,18 +7,18 @@
 #card {
     margin-left: 10%;
     height: 15vh;
+    max-height: 250px;
     width: 78%;
+    max-width: 1050px;
     position: -webkit-sticky;
     position: sticky;
     top: 50%;
     background-image: linear-gradient(rgb(223, 223, 223), rgb(201, 201, 201), rgb(160, 160, 160));
-    
 }
 
 #controls {
    margin-top: -12%;
 }
-
 
 #cover {
     width: 45%;
