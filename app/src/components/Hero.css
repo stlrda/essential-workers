@@ -13,6 +13,7 @@ html, body {
 div#hero-image-area {
   height: 45vh;
   min-height: 200px;
+  max-height: 900px;
   width: 45vw;
   background-color:#1B365D;
   opacity: 0.9;
@@ -25,37 +26,58 @@ div#hero-image-area > h3 {
     color: white;
     font-weight: 900;
     font-family: hero;
-    font-size: 3.5vw;
     text-align: left;
     padding-left: 2%;
 }
 
 
-@media screen and (max-width: 1920px) {
+@media screen and (min-width: 2181px) {
+
   div#hero-image-area > h3 {
-    font-size: 3vw;  
+    font-size: 3em;  
   }
+
 }
 
-/* @media screen and (max-width: 1680px) {
+@media screen and (max-width: 2180px) {
+
   div#hero-image-area > h3 {
-    font-size: 2vw;  
+    font-size: 2em;  
   }
-} */
+
+}
+
+@media screen and (max-width: 1280px) {
+
+  div#hero-image-area > h3 {
+    font-size: 1.5em;  
+  }
+
+}
+
+@media screen and (max-width: 960px) {
+
+  div#hero-image-area > h3 {
+    font-size: 1em;  
+  }
+
+}
 
 
 @media screen and (max-width: 768px) {
+
   html, body {
     background-position: 0% 12%;
+  }
+
+  div#hero-image-area > h3 {
+    font-size: 0.8em;  
   }
 
   div#hero-image-area {
     height: 30vh;
   }
 
-  div#hero-image-area > h3 {
-    font-size: 3.5vw;  
-  }
 }
 
 @media screen and (max-width: 420px) {
@@ -67,6 +89,7 @@ div#hero-image-area > h3 {
   div#hero-image-area {
     height: 25vh;
   }
+
 }
 
 @media screen and (max-width: 320px) {
@@ -74,6 +97,7 @@ div#hero-image-area > h3 {
   html, body {
     background-position: 0% 15%;
   }
+
 }
 
 @media screen and (max-width: 280px) {
@@ -86,6 +110,7 @@ div#hero-image-area > h3 {
     min-height: 50px;
     height: 100px;
   }
+
 }
 
 

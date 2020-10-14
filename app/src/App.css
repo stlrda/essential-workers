@@ -1,11 +1,16 @@
 @font-face {
   font-family: hero;
-  src: url('./fonts/Montserrat-ExtraBold.ttf');
+  src: url('./fonts/Comfortaa-Bold.ttf');
+}
+
+@font-face {
+  font-family: body;
+  src: url('./fonts/SourceSansPro-Light.ttf');
 }
 
 @font-face {
   font-family: footer;
-  src: url('./fonts/Montserrat-Light.ttf');
+  src: url('./fonts/OpenSans-Light.ttf');
 }
 
 a:link {
@@ -43,8 +48,8 @@ footer {
 }
 
 p#intro, p#segway, p#map-summary, p#table-summary {
-  font-family: footer;
-  font-size: 2vw;
+  font-family: body;
+  font-weight: 500;
   text-align: justify;
   text-justify: inter-word;
   margin-left: auto;
@@ -81,22 +86,22 @@ p#table-summary {
 }
 
 
-
-@media screen and (max-width: 1920px) {
+@media screen and (min-width: 2181px) {
   p#intro, p#segway, p#map-summary, p#table-summary  {
-    font-size: 1.7vw;
+    font-size: 3em;
   }
-  
-  p#groupings {
-    font-size: 1.2vw;
-  }
+}
 
+@media screen and (max-width: 2180px) {
+  p#intro, p#segway, p#map-summary, p#table-summary  {
+    font-size: 2em;
+  }
 }
 
 @media screen and (max-width: 1680px) {
 
   p#intro, p#segway, p#map-summary, p#table-summary  {
-    font-size: 2vw;
+    font-size: 1.5em;
   }
   
   p#groupings {
@@ -104,6 +109,7 @@ p#table-summary {
   }
 
 }
+
 
 
 @media screen and (max-width: 768px) {
